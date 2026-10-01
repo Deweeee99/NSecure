@@ -416,6 +416,78 @@ abstract class AppLocalizations {
   /// **'Security Modules'**
   String get securityModules;
 
+  /// No description provided for @activeTasks.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Tasks'**
+  String get activeTasks;
+
+  /// No description provided for @activeTasksSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Priority work for the current security shift.'**
+  String get activeTasksSubtitle;
+
+  /// No description provided for @quickActions.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Actions'**
+  String get quickActions;
+
+  /// No description provided for @taskStatusInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'ACTIVE'**
+  String get taskStatusInProgress;
+
+  /// No description provided for @taskStatusWaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'WAITING'**
+  String get taskStatusWaiting;
+
+  /// No description provided for @taskStatusAttention.
+  ///
+  /// In en, this message translates to:
+  /// **'PRIORITY'**
+  String get taskStatusAttention;
+
+  /// No description provided for @taskPatrolTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue Patrol'**
+  String get taskPatrolTitle;
+
+  /// No description provided for @taskPatrolSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Main Lobby route • Continue to the next checkpoint'**
+  String get taskPatrolSubtitle;
+
+  /// No description provided for @taskVisitorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify Visitor'**
+  String get taskVisitorTitle;
+
+  /// No description provided for @taskVisitorSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A visitor is waiting for verification at the main lobby'**
+  String get taskVisitorSubtitle;
+
+  /// No description provided for @taskIncidentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Review Incident'**
+  String get taskIncidentTitle;
+
+  /// No description provided for @taskIncidentSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Security incident requires attention in the basement area'**
+  String get taskIncidentSubtitle;
+
   /// No description provided for @platform.
   ///
   /// In en, this message translates to:

@@ -19,6 +19,7 @@ import '../../../package/presentation/package_management_screen.dart';
 import '../../../visitor/domain/repositories/visitor_repository.dart';
 import '../../../visitor/presentation/history/verification_history_flow.dart';
 import '../../../visitor/presentation/verification/visitor_verification_flow.dart';
+import '../../data/mock/security_home_mock_data.dart';
 import '../../domain/models/security_dashboard.dart';
 import '../../domain/models/security_user.dart';
 import '../../domain/repositories/security_dashboard_repository.dart';
@@ -35,6 +36,7 @@ class SecurityAppShell extends StatefulWidget {
     this.securityDashboardRepository,
     this.enableDeviceQrScanner = false,
     this.enableEmergencyForegroundPolling = false,
+    this.showMockOperationalPreview = false,
     required this.securityUser,
     this.onLogout,
     super.key,
@@ -48,6 +50,7 @@ class SecurityAppShell extends StatefulWidget {
   final SecurityDashboardRepository? securityDashboardRepository;
   final bool enableDeviceQrScanner;
   final bool enableEmergencyForegroundPolling;
+  final bool showMockOperationalPreview;
   final SecurityUser securityUser;
   final Future<void> Function()? onLogout;
 
@@ -237,6 +240,9 @@ class _SecurityAppShellState extends State<SecurityAppShell>
 
     return SecurityHomeScreen(
       user: widget.securityUser,
+      activeTasks: widget.showMockOperationalPreview
+          ? SecurityHomeMockData.activeTasks
+          : const [],
       dashboard: _dashboard,
       dashboardLoading: _dashboardLoading,
       dashboardErrorMessage: _dashboardFailure == null

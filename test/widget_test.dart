@@ -32,7 +32,11 @@ void main() {
     expect(find.text('NSecure'), findsOneWidget);
     expect(find.text('Security Team'), findsOneWidget);
     expect(find.text("Today's Overview"), findsNothing);
-    expect(find.text('Security Modules'), findsOneWidget);
+    expect(find.text('Active Tasks'), findsOneWidget);
+    expect(find.text('Continue Patrol'), findsOneWidget);
+    expect(find.text('Verify Visitor'), findsOneWidget);
+    expect(find.text('Review Incident'), findsOneWidget);
+    expect(find.text('Quick Actions'), findsOneWidget);
 
     expect(find.text('Visitor Verification'), findsOneWidget);
     expect(find.text('Patrol Management'), findsOneWidget);
@@ -43,8 +47,22 @@ void main() {
     expect(find.text('Vehicle Management'), findsNothing);
     expect(find.byIcon(Icons.notifications_none_rounded), findsNothing);
 
-    expect(find.text('ACTIVE'), findsNothing);
+    expect(find.text('ACTIVE'), findsOneWidget);
+    expect(find.text('WAITING'), findsOneWidget);
+    expect(find.text('PRIORITY'), findsOneWidget);
     expect(find.text('COMING SOON'), findsNothing);
+  });
+
+  testWidgets('Active task preview routes into existing operational flow', (
+    tester,
+  ) async {
+    await tester.pumpWidget(const NSecureApp());
+
+    await tester.tap(find.byKey(const Key('activeTask_TASK-PATROL-001')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Patrol Dashboard'), findsOneWidget);
+    expect(find.text('Assigned Patrols'), findsOneWidget);
   });
 
   testWidgets('Verify tab opens active QR verification path', (tester) async {
@@ -121,7 +139,7 @@ void main() {
 
     await tester.binding.handlePopRoute();
     await tester.pumpAndSettle();
-    expect(find.text('Security Modules'), findsOneWidget);
+    expect(find.text('Quick Actions'), findsOneWidget);
 
     await tester.tap(find.text('Verify'));
     await tester.pumpAndSettle();
@@ -136,7 +154,7 @@ void main() {
 
     await tester.binding.handlePopRoute();
     await tester.pumpAndSettle();
-    expect(find.text('Security Modules'), findsOneWidget);
+    expect(find.text('Quick Actions'), findsOneWidget);
   });
 
   testWidgets('manual verification shows explicit not-found state', (

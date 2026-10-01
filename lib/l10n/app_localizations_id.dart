@@ -172,6 +172,45 @@ class AppLocalizationsId extends AppLocalizations {
   String get securityModules => 'Modul Security';
 
   @override
+  String get activeTasks => 'Tugas Aktif';
+
+  @override
+  String get activeTasksSubtitle =>
+      'Pekerjaan prioritas untuk shift security saat ini.';
+
+  @override
+  String get quickActions => 'Aksi Cepat';
+
+  @override
+  String get taskStatusInProgress => 'AKTIF';
+
+  @override
+  String get taskStatusWaiting => 'MENUNGGU';
+
+  @override
+  String get taskStatusAttention => 'PRIORITAS';
+
+  @override
+  String get taskPatrolTitle => 'Lanjutkan Patroli';
+
+  @override
+  String get taskPatrolSubtitle =>
+      'Rute Lobby Utama • Lanjut ke checkpoint berikutnya';
+
+  @override
+  String get taskVisitorTitle => 'Verifikasi Tamu';
+
+  @override
+  String get taskVisitorSubtitle => 'Tamu menunggu verifikasi di lobby utama';
+
+  @override
+  String get taskIncidentTitle => 'Tinjau Insiden';
+
+  @override
+  String get taskIncidentSubtitle =>
+      'Insiden keamanan perlu ditangani di area basement';
+
+  @override
   String get platform => 'Platform';
 
   @override

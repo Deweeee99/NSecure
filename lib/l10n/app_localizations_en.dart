@@ -172,6 +172,46 @@ class AppLocalizationsEn extends AppLocalizations {
   String get securityModules => 'Security Modules';
 
   @override
+  String get activeTasks => 'Active Tasks';
+
+  @override
+  String get activeTasksSubtitle =>
+      'Priority work for the current security shift.';
+
+  @override
+  String get quickActions => 'Quick Actions';
+
+  @override
+  String get taskStatusInProgress => 'ACTIVE';
+
+  @override
+  String get taskStatusWaiting => 'WAITING';
+
+  @override
+  String get taskStatusAttention => 'PRIORITY';
+
+  @override
+  String get taskPatrolTitle => 'Continue Patrol';
+
+  @override
+  String get taskPatrolSubtitle =>
+      'Main Lobby route • Continue to the next checkpoint';
+
+  @override
+  String get taskVisitorTitle => 'Verify Visitor';
+
+  @override
+  String get taskVisitorSubtitle =>
+      'A visitor is waiting for verification at the main lobby';
+
+  @override
+  String get taskIncidentTitle => 'Review Incident';
+
+  @override
+  String get taskIncidentSubtitle =>
+      'Security incident requires attention in the basement area';
+
+  @override
   String get platform => 'Platform';
 
   @override

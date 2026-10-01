@@ -77,6 +77,7 @@ class _NSecureAppState extends State<NSecureApp> {
         enableDeviceQrScanner: _dependencies.enableDeviceQrScanner,
         enableEmergencyForegroundPolling:
             _dependencies.enableEmergencyForegroundPolling,
+        showMockOperationalPreview: true,
         securityUser: SecurityHomeMockData.user,
       );
     }

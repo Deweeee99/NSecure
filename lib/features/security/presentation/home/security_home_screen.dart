@@ -5,6 +5,7 @@ import '../../../../core/theme/security_tokens.dart';
 import '../../domain/models/module_preview.dart';
 import '../../domain/models/security_dashboard.dart';
 import '../../domain/models/security_module_registry.dart';
+import '../../domain/models/security_task_preview.dart';
 import '../../domain/models/security_user.dart';
 
 class SecurityHomeScreen extends StatelessWidget {
@@ -15,6 +16,7 @@ class SecurityHomeScreen extends StatelessWidget {
     required this.onOpenEmergencyResponse,
     required this.onOpenPackageReceiving,
     required this.user,
+    this.activeTasks = const <SecurityTaskPreview>[],
     this.dashboard,
     this.dashboardLoading = false,
     this.dashboardErrorMessage,
@@ -29,6 +31,7 @@ class SecurityHomeScreen extends StatelessWidget {
   final VoidCallback onOpenEmergencyResponse;
   final VoidCallback onOpenPackageReceiving;
   final SecurityUser user;
+  final List<SecurityTaskPreview> activeTasks;
   final SecurityDashboardSnapshot? dashboard;
   final bool dashboardLoading;
   final String? dashboardErrorMessage;
@@ -84,6 +87,30 @@ class SecurityHomeScreen extends StatelessWidget {
                   ),
             ),
             const SizedBox(height: SecuritySpacing.xl),
+            if (activeTasks.isNotEmpty) ...[
+              Text(
+                context.l10n.activeTasks,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const SizedBox(height: 4),
+              Text(
+                context.l10n.activeTasksSubtitle,
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: SecurityColors.textSecondary,
+                    ),
+              ),
+              const SizedBox(height: SecuritySpacing.sm),
+              ...activeTasks.map(
+                (task) => Padding(
+                  padding: const EdgeInsets.only(bottom: SecuritySpacing.sm),
+                  child: _ActiveTaskCard(
+                    task: task,
+                    onTap: () => _handleTaskTap(task),
+                  ),
+                ),
+              ),
+              const SizedBox(height: SecuritySpacing.sm),
+            ],
             if (dashboard != null || dashboardLoading || dashboardErrorMessage != null) ...[
               Text(
                 context.l10n.todaysOverview,
@@ -105,7 +132,7 @@ class SecurityHomeScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    context.l10n.securityModules,
+                    context.l10n.quickActions,
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
@@ -142,6 +169,17 @@ class SecurityHomeScreen extends StatelessWidget {
     );
   }
 
+  void _handleTaskTap(SecurityTaskPreview task) {
+    switch (task.type) {
+      case SecurityTaskPreviewType.patrol:
+        onOpenPatrolManagement();
+      case SecurityTaskPreviewType.visitor:
+        onOpenVisitorVerification();
+      case SecurityTaskPreviewType.incident:
+        onOpenIncidentReporting();
+    }
+  }
+
   void _handleModuleTap(ModulePreview module) {
     switch (module.key) {
       case 'visitor_verification':
@@ -157,6 +195,126 @@ class SecurityHomeScreen extends StatelessWidget {
     }
   }
 }
+
+class _ActiveTaskCard extends StatelessWidget {
+  const _ActiveTaskCard({required this.task, required this.onTap});
+
+  final SecurityTaskPreview task;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final color = _taskStatusColor(task.status);
+    final softColor = _taskStatusSoftColor(task.status);
+
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        key: Key('activeTask_${task.id}'),
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(SecurityRadius.lg),
+        child: Ink(
+          padding: const EdgeInsets.all(SecuritySpacing.md),
+          decoration: BoxDecoration(
+            color: SecurityColors.surface,
+            borderRadius: BorderRadius.circular(SecurityRadius.lg),
+            border: Border.all(color: SecurityColors.border),
+            boxShadow: SecurityShadows.soft,
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: 42,
+                height: 42,
+                decoration: BoxDecoration(
+                  color: softColor,
+                  borderRadius: BorderRadius.circular(SecurityRadius.md),
+                ),
+                child: Icon(_taskIcon(task.type), color: color, size: 22),
+              ),
+              const SizedBox(width: SecuritySpacing.sm),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _taskTitle(context, task.type),
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            fontWeight: FontWeight.w800,
+                            color: SecurityColors.textPrimary,
+                          ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      _taskSubtitle(context, task.type),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: SecuritySpacing.xs),
+              Text(
+                _taskStatusLabel(context, task.status),
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: color,
+                      fontWeight: FontWeight.w800,
+                    ),
+              ),
+              const Icon(
+                Icons.chevron_right_rounded,
+                color: SecurityColors.textMuted,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+String _taskTitle(BuildContext context, SecurityTaskPreviewType type) =>
+    switch (type) {
+      SecurityTaskPreviewType.patrol => context.l10n.taskPatrolTitle,
+      SecurityTaskPreviewType.visitor => context.l10n.taskVisitorTitle,
+      SecurityTaskPreviewType.incident => context.l10n.taskIncidentTitle,
+    };
+
+String _taskSubtitle(BuildContext context, SecurityTaskPreviewType type) =>
+    switch (type) {
+      SecurityTaskPreviewType.patrol => context.l10n.taskPatrolSubtitle,
+      SecurityTaskPreviewType.visitor => context.l10n.taskVisitorSubtitle,
+      SecurityTaskPreviewType.incident => context.l10n.taskIncidentSubtitle,
+    };
+
+String _taskStatusLabel(
+  BuildContext context,
+  SecurityTaskPreviewStatus status,
+) =>
+    switch (status) {
+      SecurityTaskPreviewStatus.inProgress => context.l10n.taskStatusInProgress,
+      SecurityTaskPreviewStatus.waiting => context.l10n.taskStatusWaiting,
+      SecurityTaskPreviewStatus.attention => context.l10n.taskStatusAttention,
+    };
+
+IconData _taskIcon(SecurityTaskPreviewType type) => switch (type) {
+      SecurityTaskPreviewType.patrol => Icons.shield_outlined,
+      SecurityTaskPreviewType.visitor => Icons.qr_code_scanner_rounded,
+      SecurityTaskPreviewType.incident => Icons.assignment_late_outlined,
+    };
+
+Color _taskStatusColor(SecurityTaskPreviewStatus status) => switch (status) {
+      SecurityTaskPreviewStatus.inProgress => SecurityColors.info,
+      SecurityTaskPreviewStatus.waiting => SecurityColors.warning,
+      SecurityTaskPreviewStatus.attention => SecurityColors.danger,
+    };
+
+Color _taskStatusSoftColor(SecurityTaskPreviewStatus status) => switch (status) {
+      SecurityTaskPreviewStatus.inProgress => SecurityColors.infoSoft,
+      SecurityTaskPreviewStatus.waiting => SecurityColors.warningSoft,
+      SecurityTaskPreviewStatus.attention => SecurityColors.dangerSoft,
+    };
 
 class _SecurityHomeHeader extends StatelessWidget {
   const _SecurityHomeHeader({this.onLogout});
