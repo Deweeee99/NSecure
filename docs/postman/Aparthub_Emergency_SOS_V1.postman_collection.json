@@ -1,0 +1,303 @@
+{
+  "info": {
+    "name": "Aparthub Emergency SOS V1",
+    "_postman_id": "f7d19421-4baf-4a6a-9e0a-aph37sos0001",
+    "description": "APH.37 Resident → Security software-only Emergency SOS contract. No panic hardware/push dependency.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost"
+    },
+    {
+      "key": "resident_token",
+      "value": ""
+    },
+    {
+      "key": "security_token",
+      "value": ""
+    },
+    {
+      "key": "emergency_alert_id",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Resident",
+      "item": [
+        {
+          "name": "Trigger SOS",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{resident_token}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "id"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Butuh bantuan segera.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/resident/emergency/sos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "resident",
+                "emergency",
+                "sos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Current SOS",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{resident_token}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "id"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/resident/emergency/current",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "resident",
+                "emergency",
+                "current"
+              ]
+            }
+          }
+        },
+        {
+          "name": "SOS History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{resident_token}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "id"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/resident/emergency/history?per_page=20",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "resident",
+                "emergency",
+                "history"
+              ],
+              "query": [
+                {
+                  "key": "per_page",
+                  "value": "20"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Security",
+      "item": [
+        {
+          "name": "Active Modal Queue",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "id"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/security/emergency-alerts/active",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "security",
+                "emergency-alerts",
+                "active"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Unresolved Alerts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/security/emergency-alerts",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "security",
+                "emergency-alerts"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Alert Detail",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/security/emergency-alerts/{{emergency_alert_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "security",
+                "emergency-alerts",
+                "{{emergency_alert_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Acknowledge / Take",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "id"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/security/emergency-alerts/{{emergency_alert_id}}/acknowledge",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "security",
+                "emergency-alerts",
+                "{{emergency_alert_id}}",
+                "acknowledge"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Resolve",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Resident sudah aman.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/security/emergency-alerts/{{emergency_alert_id}}/resolve",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "security",
+                "emergency-alerts",
+                "{{emergency_alert_id}}",
+                "resolve"
+              ]
+            }
+          }
+        },
+        {
+          "name": "History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/security/emergency-alerts/history?per_page=30",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "security",
+                "emergency-alerts",
+                "history"
+              ],
+              "query": [
+                {
+                  "key": "per_page",
+                  "value": "30"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

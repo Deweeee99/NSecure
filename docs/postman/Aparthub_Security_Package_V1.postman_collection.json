@@ -1,0 +1,103 @@
+{
+  "info": {
+    "name": "Aparthub Security Package Receiving API V1",
+    "description": "APH.38 Security Package Receiving -> existing Package Center / resident_packages source of truth.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {"key": "base_url", "value": "http://localhost/api"},
+    {"key": "security_token", "value": ""},
+    {"key": "resident_token", "value": ""},
+    {"key": "resident_id", "value": "1"},
+    {"key": "package_id", "value": "1"}
+  ],
+  "item": [
+    {
+      "name": "Security - Search Residents",
+      "request": {
+        "method": "GET",
+        "header": [
+          {"key": "Authorization", "value": "Bearer {{security_token}}"},
+          {"key": "Accept-Language", "value": "id"}
+        ],
+        "url": "{{base_url}}/security/packages/residents/search?q=Resident"
+      }
+    },
+    {
+      "name": "Security - List Packages",
+      "request": {
+        "method": "GET",
+        "header": [
+          {"key": "Authorization", "value": "Bearer {{security_token}}"},
+          {"key": "Accept-Language", "value": "id"}
+        ],
+        "url": "{{base_url}}/security/packages?status=Ready%20for%20Pickup"
+      }
+    },
+    {
+      "name": "Security - Receive Package",
+      "request": {
+        "method": "POST",
+        "header": [
+          {"key": "Authorization", "value": "Bearer {{security_token}}"},
+          {"key": "Accept-Language", "value": "id"},
+          {"key": "Content-Type", "value": "application/json"}
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"resident_id\": {{resident_id}},\n  \"courier_name\": \"JNE\",\n  \"tracking_number\": \"JNE-APH38-001\",\n  \"sender_name\": \"Marketplace Seller\",\n  \"package_description\": \"Medium box\",\n  \"storage_location\": \"Lobby Rack A\",\n  \"notes\": \"Received by Security\"\n}"
+        },
+        "url": "{{base_url}}/security/packages"
+      }
+    },
+    {
+      "name": "Security - Package Detail",
+      "request": {
+        "method": "GET",
+        "header": [
+          {"key": "Authorization", "value": "Bearer {{security_token}}"},
+          {"key": "Accept-Language", "value": "en"}
+        ],
+        "url": "{{base_url}}/security/packages/{{package_id}}"
+      }
+    },
+    {
+      "name": "Security - Collect Package",
+      "request": {
+        "method": "POST",
+        "header": [
+          {"key": "Authorization", "value": "Bearer {{security_token}}"},
+          {"key": "Accept-Language", "value": "id"},
+          {"key": "Content-Type", "value": "application/json"}
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"collection_notes\": \"Collected by resident at lobby.\"\n}"
+        },
+        "url": "{{base_url}}/security/packages/{{package_id}}/collect"
+      }
+    },
+    {
+      "name": "Resident - List My Packages",
+      "request": {
+        "method": "GET",
+        "header": [
+          {"key": "Authorization", "value": "Bearer {{resident_token}}"},
+          {"key": "Accept-Language", "value": "id"}
+        ],
+        "url": "{{base_url}}/resident/packages"
+      }
+    },
+    {
+      "name": "Resident - My Package Detail",
+      "request": {
+        "method": "GET",
+        "header": [
+          {"key": "Authorization", "value": "Bearer {{resident_token}}"},
+          {"key": "Accept-Language", "value": "id"}
+        ],
+        "url": "{{base_url}}/resident/packages/{{package_id}}"
+      }
+    }
+  ]
+}

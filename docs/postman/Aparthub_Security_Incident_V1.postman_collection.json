@@ -1,0 +1,350 @@
+{
+  "info": {
+    "name": "Aparthub Security Incident V1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "APH.32 Security Mobile Incident Reporting API. Hardware-dependent Security remains HOLD."
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost/api"
+    },
+    {
+      "key": "securityToken",
+      "value": ""
+    },
+    {
+      "key": "incidentId",
+      "value": "1"
+    },
+    {
+      "key": "propertyId",
+      "value": "1"
+    },
+    {
+      "key": "checkpointVisitId",
+      "value": ""
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{securityToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "Incident Dashboard",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/security/incidents/dashboard",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "security",
+            "incidents",
+            "dashboard"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Incident List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/security/incidents?scope=mine&per_page=20",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "security",
+            "incidents?scope=mine&per_page=20"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Incident History",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/security/incidents/history?scope=mine&per_page=20",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "security",
+            "incidents",
+            "history?scope=mine&per_page=20"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Incident Detail",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/security/incidents/{{incidentId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "security",
+            "incidents",
+            "{{incidentId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Report Incident",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/security/incidents",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "security",
+            "incidents"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"property_id\": \"{{propertyId}}\",\n  \"title\": \"Emergency exit obstructed\",\n  \"description\": \"Boxes block the emergency exit.\",\n  \"category\": \"Safety\",\n  \"severity\": \"High\",\n  \"location\": \"East Emergency Exit\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Report Incident From Patrol",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/security/incidents",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "security",
+            "incidents"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patrol_checkpoint_visit_id\": \"{{checkpointVisitId}}\",\n  \"title\": \"Water leak found\",\n  \"description\": \"Water leak observed during patrol.\",\n  \"category\": \"Safety\",\n  \"severity\": \"Medium\",\n  \"location\": \"Service Corridor\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Acknowledge Incident",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/security/incidents/{{incidentId}}/acknowledge",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "security",
+            "incidents",
+            "{{incidentId}}",
+            "acknowledge"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"notes\": \"Acknowledged by front desk.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Start Incident",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/security/incidents/{{incidentId}}/start",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "security",
+            "incidents",
+            "{{incidentId}}",
+            "start"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"notes\": \"Checking location.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Resolve Incident",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/security/incidents/{{incidentId}}/resolve",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "security",
+            "incidents",
+            "{{incidentId}}",
+            "resolve"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"notes\": \"Hazard removed and area secured.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Add Incident Note",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/security/incidents/{{incidentId}}/notes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "security",
+            "incidents",
+            "{{incidentId}}",
+            "notes"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"notes\": \"CCTV footage secured.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

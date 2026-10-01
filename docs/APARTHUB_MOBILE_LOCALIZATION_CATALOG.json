@@ -1,0 +1,522 @@
+{
+  "contract_version": "APH.38",
+  "supported_locales": [
+    "id",
+    "en"
+  ],
+  "rules": {
+    "canonical_wire_values_are_never_translated": true,
+    "send_accept_language": true,
+    "read_content_language": true,
+    "fallback_locale": "en",
+    "do_not_branch_business_logic_on_message": true
+  },
+  "status_labels": {
+    "visitor": {
+      "Pending": {
+        "id": "Menunggu Persetujuan",
+        "en": "Pending"
+      },
+      "Approved": {
+        "id": "Disetujui",
+        "en": "Approved"
+      },
+      "Rejected": {
+        "id": "Ditolak",
+        "en": "Rejected"
+      },
+      "Checked In": {
+        "id": "Sudah Check-In",
+        "en": "Checked In"
+      },
+      "Checked Out": {
+        "id": "Sudah Check-Out",
+        "en": "Checked Out"
+      },
+      "Cancelled": {
+        "id": "Dibatalkan",
+        "en": "Cancelled"
+      },
+      "Expired": {
+        "id": "Kedaluwarsa",
+        "en": "Expired"
+      }
+    },
+    "service_request_priority": {
+      "Low": {
+        "id": "Rendah",
+        "en": "Low"
+      },
+      "Medium": {
+        "id": "Sedang",
+        "en": "Medium"
+      },
+      "High": {
+        "id": "Tinggi",
+        "en": "High"
+      },
+      "Emergency": {
+        "id": "Darurat",
+        "en": "Emergency"
+      }
+    },
+    "service_request": {
+      "Submitted": {
+        "id": "Diajukan",
+        "en": "Submitted"
+      },
+      "Assigned": {
+        "id": "Ditugaskan",
+        "en": "Assigned"
+      },
+      "On The Way": {
+        "id": "Dalam Perjalanan",
+        "en": "On The Way"
+      },
+      "In Progress": {
+        "id": "Sedang Dikerjakan",
+        "en": "In Progress"
+      },
+      "Submitted for QC": {
+        "id": "Diajukan untuk QC",
+        "en": "Submitted for QC"
+      },
+      "Rework": {
+        "id": "Pengerjaan Ulang",
+        "en": "Rework"
+      },
+      "Completed": {
+        "id": "Selesai",
+        "en": "Completed"
+      },
+      "Cancelled": {
+        "id": "Dibatalkan",
+        "en": "Cancelled"
+      }
+    },
+    "work_order": {
+      "Assigned": {
+        "id": "Ditugaskan",
+        "en": "Assigned"
+      },
+      "On The Way": {
+        "id": "Dalam Perjalanan",
+        "en": "On The Way"
+      },
+      "In Progress": {
+        "id": "Sedang Dikerjakan",
+        "en": "In Progress"
+      },
+      "Submitted for QC": {
+        "id": "Diajukan untuk QC",
+        "en": "Submitted for QC"
+      },
+      "Rework": {
+        "id": "Pengerjaan Ulang",
+        "en": "Rework"
+      },
+      "Completed": {
+        "id": "Selesai",
+        "en": "Completed"
+      },
+      "Cancelled": {
+        "id": "Dibatalkan",
+        "en": "Cancelled"
+      }
+    },
+    "completion_mode": {
+      "submitted_for_qc": {
+        "id": "Diajukan untuk QC",
+        "en": "Submitted for QC"
+      },
+      "qc_approved": {
+        "id": "Disetujui QC",
+        "en": "QC Approved"
+      },
+      "technician_direct": {
+        "id": "Selesai Langsung oleh Teknisi",
+        "en": "Technician Direct Completion"
+      }
+    },
+    "facility": {
+      "Available": {
+        "id": "Tersedia",
+        "en": "Available"
+      },
+      "Maintenance": {
+        "id": "Pemeliharaan",
+        "en": "Maintenance"
+      }
+    },
+    "facility_booking": {
+      "Pending": {
+        "id": "Menunggu",
+        "en": "Pending"
+      },
+      "Confirmed": {
+        "id": "Dikonfirmasi",
+        "en": "Confirmed"
+      },
+      "Completed": {
+        "id": "Selesai",
+        "en": "Completed"
+      },
+      "Cancelled": {
+        "id": "Dibatalkan",
+        "en": "Cancelled"
+      }
+    },
+    "billing_invoice": {
+      "Draft": {
+        "id": "Draft",
+        "en": "Draft"
+      },
+      "Issued": {
+        "id": "Diterbitkan",
+        "en": "Issued"
+      },
+      "Partial": {
+        "id": "Dibayar Sebagian",
+        "en": "Partial"
+      },
+      "Paid": {
+        "id": "Lunas",
+        "en": "Paid"
+      },
+      "Overpaid": {
+        "id": "Lebih Bayar",
+        "en": "Overpaid"
+      },
+      "Credited": {
+        "id": "Dikreditkan",
+        "en": "Credited"
+      }
+    },
+    "payment_gateway": {
+      "Creating": {
+        "id": "Sedang Dibuat",
+        "en": "Creating"
+      },
+      "Pending": {
+        "id": "Menunggu",
+        "en": "Pending"
+      },
+      "Recorded": {
+        "id": "Tercatat",
+        "en": "Recorded"
+      },
+      "Failed": {
+        "id": "Gagal",
+        "en": "Failed"
+      }
+    },
+    "marketplace_order": {
+      "Pending": {
+        "id": "Menunggu",
+        "en": "Pending"
+      },
+      "Confirmed": {
+        "id": "Dikonfirmasi",
+        "en": "Confirmed"
+      },
+      "Processing": {
+        "id": "Diproses",
+        "en": "Processing"
+      },
+      "Ready": {
+        "id": "Siap",
+        "en": "Ready"
+      },
+      "Completed": {
+        "id": "Selesai",
+        "en": "Completed"
+      },
+      "Cancelled": {
+        "id": "Dibatalkan",
+        "en": "Cancelled"
+      },
+      "Rejected": {
+        "id": "Ditolak",
+        "en": "Rejected"
+      }
+    },
+    "patrol_session": {
+      "Scheduled": {
+        "id": "Terjadwal",
+        "en": "Scheduled"
+      },
+      "In Progress": {
+        "id": "Sedang Berjalan",
+        "en": "In Progress"
+      },
+      "Completed": {
+        "id": "Selesai",
+        "en": "Completed"
+      },
+      "Cancelled": {
+        "id": "Dibatalkan",
+        "en": "Cancelled"
+      }
+    },
+    "patrol_checkpoint": {
+      "Pending": {
+        "id": "Menunggu",
+        "en": "Pending"
+      },
+      "Completed": {
+        "id": "Selesai",
+        "en": "Completed"
+      },
+      "Skipped": {
+        "id": "Dilewati",
+        "en": "Skipped"
+      },
+      "Issue": {
+        "id": "Bermasalah",
+        "en": "Issue"
+      }
+    },
+    "incident_severity": {
+      "Low": {
+        "id": "Rendah",
+        "en": "Low"
+      },
+      "Medium": {
+        "id": "Sedang",
+        "en": "Medium"
+      },
+      "High": {
+        "id": "Tinggi",
+        "en": "High"
+      },
+      "Critical": {
+        "id": "Kritis",
+        "en": "Critical"
+      }
+    },
+    "incident": {
+      "Open": {
+        "id": "Terbuka",
+        "en": "Open"
+      },
+      "Acknowledged": {
+        "id": "Diketahui",
+        "en": "Acknowledged"
+      },
+      "In Progress": {
+        "id": "Sedang Ditangani",
+        "en": "In Progress"
+      },
+      "Resolved": {
+        "id": "Terselesaikan",
+        "en": "Resolved"
+      },
+      "Closed": {
+        "id": "Ditutup",
+        "en": "Closed"
+      },
+      "Cancelled": {
+        "id": "Dibatalkan",
+        "en": "Cancelled"
+      }
+    },
+    "emergency": {
+      "Open": {
+        "id": "Terbuka",
+        "en": "Open"
+      },
+      "Acknowledged": {
+        "id": "Diambil Security",
+        "en": "Acknowledged"
+      },
+      "Resolved": {
+        "id": "Selesai",
+        "en": "Resolved"
+      }
+    },
+    "package": {
+      "Ready for Pickup": {
+        "id": "Siap Diambil",
+        "en": "Ready for Pickup"
+      },
+      "Collected": {
+        "id": "Sudah Diambil",
+        "en": "Collected"
+      },
+      "Expired": {
+        "id": "Kedaluwarsa",
+        "en": "Expired"
+      }
+    }
+  },
+  "security_error_labels": {
+    "UNAUTHENTICATED": {
+      "id": "Autentikasi diperlukan.",
+      "en": "Unauthenticated."
+    },
+    "FORBIDDEN": {
+      "id": "Anda tidak memiliki akses untuk melakukan tindakan ini.",
+      "en": "Forbidden."
+    },
+    "VALIDATION_ERROR": {
+      "id": "Data yang diberikan tidak valid.",
+      "en": "The given data was invalid."
+    },
+    "RESOURCE_NOT_FOUND": {
+      "id": "Data yang diminta tidak ditemukan.",
+      "en": "Resource not found."
+    },
+    "SERVER_ERROR": {
+      "id": "Terjadi kesalahan server yang tidak terduga.",
+      "en": "An unexpected server error occurred."
+    },
+    "SECURITY_INVALID_CREDENTIALS": {
+      "id": "Kredensial security tidak valid.",
+      "en": "Invalid security credentials."
+    },
+    "SECURITY_PROPERTY_UNAVAILABLE": {
+      "id": "Tidak ada property Security aktif yang ditugaskan kepada user ini.",
+      "en": "No enabled Security property is assigned to this user."
+    },
+    "VISITOR_NOT_FOUND": {
+      "id": "Visitor tidak ditemukan.",
+      "en": "Visitor not found."
+    },
+    "VISITOR_QR_INVALID": {
+      "id": "QR / kode akses visitor tidak valid.",
+      "en": "Visitor QR / access code is invalid."
+    },
+    "VISITOR_PENDING_APPROVAL": {
+      "id": "Visitor masih menunggu approval.",
+      "en": "Visitor is still pending approval."
+    },
+    "VISITOR_REJECTED": {
+      "id": "Visitor sudah ditolak.",
+      "en": "Visitor has been rejected."
+    },
+    "VISITOR_CANCELLED": {
+      "id": "Visitor sudah dibatalkan.",
+      "en": "Visitor has been cancelled."
+    },
+    "VISITOR_ALREADY_CHECKED_IN": {
+      "id": "Visitor sudah check-in.",
+      "en": "Visitor has already checked in."
+    },
+    "VISITOR_ALREADY_CHECKED_OUT": {
+      "id": "Visitor sudah check-out.",
+      "en": "Visitor has already checked out."
+    },
+    "VISITOR_EXPIRED": {
+      "id": "Akses visitor sudah kedaluwarsa.",
+      "en": "Visitor access has expired."
+    },
+    "VISITOR_INVALID_STATE": {
+      "id": "Status visitor tidak valid untuk tindakan ini.",
+      "en": "Visitor is not in a valid state for this action."
+    },
+    "VISITOR_NOT_VALID_TODAY": {
+      "id": "Visitor belum berada pada tanggal kunjungan yang valid.",
+      "en": "Visitor is not valid for today's visit date."
+    },
+    "PATROL_NOT_FOUND": {
+      "id": "Patrol tidak ditemukan.",
+      "en": "Patrol not found."
+    },
+    "PATROL_ALREADY_STARTED": {
+      "id": "Patrol sudah dimulai.",
+      "en": "Patrol has already started."
+    },
+    "PATROL_ALREADY_COMPLETED": {
+      "id": "Patrol sudah selesai.",
+      "en": "Patrol has already been completed."
+    },
+    "PATROL_CANCELLED": {
+      "id": "Patrol sudah dibatalkan.",
+      "en": "Patrol has been cancelled."
+    },
+    "PATROL_INVALID_STATE": {
+      "id": "Status patrol tidak valid untuk tindakan ini.",
+      "en": "Patrol is not in a valid state for this action."
+    },
+    "PATROL_NOT_IN_PROGRESS": {
+      "id": "Patrol belum berada pada status In Progress.",
+      "en": "Patrol is not in progress."
+    },
+    "PATROL_CHECKPOINT_NOT_FOUND": {
+      "id": "Checkpoint patrol tidak ditemukan.",
+      "en": "Patrol checkpoint not found."
+    },
+    "PATROL_CHECKPOINT_INVALID_STATE": {
+      "id": "Hasil checkpoint patrol tidak valid.",
+      "en": "Patrol checkpoint result is invalid."
+    },
+    "PATROL_CHECKPOINT_ALREADY_PROCESSED": {
+      "id": "Checkpoint patrol sudah diproses.",
+      "en": "Patrol checkpoint has already been processed."
+    },
+    "PATROL_CHECKPOINTS_PENDING": {
+      "id": "Semua checkpoint harus diselesaikan atau dilewati sebelum patrol ditutup.",
+      "en": "All checkpoints must be completed or skipped before the patrol can be closed."
+    },
+    "INCIDENT_NOT_FOUND": {
+      "id": "Incident tidak ditemukan.",
+      "en": "Incident not found."
+    },
+    "INCIDENT_ALREADY_ACKNOWLEDGED": {
+      "id": "Incident sudah di-acknowledge.",
+      "en": "Incident has already been acknowledged."
+    },
+    "INCIDENT_ALREADY_IN_PROGRESS": {
+      "id": "Incident sudah dalam proses.",
+      "en": "Incident is already in progress."
+    },
+    "INCIDENT_ALREADY_RESOLVED": {
+      "id": "Incident sudah resolved.",
+      "en": "Incident has already been resolved."
+    },
+    "INCIDENT_CLOSED": {
+      "id": "Incident sudah closed.",
+      "en": "Incident has been closed."
+    },
+    "INCIDENT_CANCELLED": {
+      "id": "Incident sudah cancelled.",
+      "en": "Incident has been cancelled."
+    },
+    "INCIDENT_INVALID_STATE": {
+      "id": "Status incident tidak valid untuk tindakan ini.",
+      "en": "Incident is not in a valid state for this action."
+    },
+    "EMERGENCY_ALERT_NOT_FOUND": {
+      "id": "Alert SOS tidak ditemukan.",
+      "en": "SOS alert not found."
+    },
+    "EMERGENCY_ALREADY_TAKEN": {
+      "id": "Alert SOS ini sudah diambil oleh security lain.",
+      "en": "This SOS alert has already been taken by another Security officer."
+    },
+    "EMERGENCY_ALREADY_RESOLVED": {
+      "id": "Alert SOS ini sudah diselesaikan.",
+      "en": "This SOS alert has already been resolved."
+    },
+    "EMERGENCY_NOT_ACKNOWLEDGED": {
+      "id": "Alert SOS harus diambil terlebih dahulu sebelum diselesaikan.",
+      "en": "The SOS alert must be acknowledged before it can be resolved."
+    },
+    "EMERGENCY_ASSIGNED_TO_OTHER": {
+      "id": "Alert SOS ini sedang ditangani oleh security lain.",
+      "en": "This SOS alert is being handled by another Security officer."
+    },
+    "PACKAGE_CENTER_UNAVAILABLE": {
+      "id": "Package Center tidak aktif pada property Security yang ditugaskan kepada user ini.",
+      "en": "Package Center is not enabled for any Security property assigned to this user."
+    },
+    "PACKAGE_RESIDENT_NOT_FOUND": {
+      "id": "Resident tidak ditemukan atau tidak tersedia untuk penerimaan paket.",
+      "en": "Resident not found or is not available for package receiving."
+    },
+    "PACKAGE_NOT_FOUND": {
+      "id": "Paket tidak ditemukan.",
+      "en": "Package not found."
+    }
+  }
+}

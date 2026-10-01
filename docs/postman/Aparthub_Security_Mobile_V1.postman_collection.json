@@ -1,0 +1,1061 @@
+{
+  "info": {
+    "_postman_id": "f47b52e2-bc2c-4cd7-a4b4-aph33securitymobile",
+    "name": "Aparthub Security Mobile V1 — Visitor + Patrol + Incident",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "APH.33 canonical Security Mobile V1 collection. Hardware-dependent modules are intentionally excluded."
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost/api/security"
+    },
+    {
+      "key": "security_token",
+      "value": ""
+    },
+    {
+      "key": "visit_id",
+      "value": "1"
+    },
+    {
+      "key": "visit_code",
+      "value": "VST-..."
+    },
+    {
+      "key": "qr_payload",
+      "value": "CANONICAL_ACCESS_CODE"
+    },
+    {
+      "key": "patrol_session_id",
+      "value": "1"
+    },
+    {
+      "key": "checkpoint_visit_id",
+      "value": "1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://localhost/api"
+    },
+    {
+      "key": "securityToken",
+      "value": ""
+    },
+    {
+      "key": "incidentId",
+      "value": "1"
+    },
+    {
+      "key": "propertyId",
+      "value": "1"
+    },
+    {
+      "key": "checkpointVisitId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Visitor Verification",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"security.frontdesk\",\n  \"password\": \"secret-pass\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Me",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "me"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/dashboard",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "dashboard"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search by Visit Code",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/visitors/search?q={{visit_code}}&limit=20",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "visitors",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "{{visit_code}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search by Visit ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/visitors/search?q={{visit_id}}&limit=20",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "visitors",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "{{visit_id}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Validate QR",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/visitor-access/validate",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "visitor-access",
+                "validate"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"{{qr_payload}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Visitor Detail",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/visitors/{{visit_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "visitors",
+                "{{visit_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Check-In Manual",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/visitors/{{visit_id}}/check-in",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "visitors",
+                "{{visit_id}}",
+                "check-in"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verification_method\": \"manual\",\n  \"access_card_number\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Check-In QR",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/visitors/{{visit_id}}/check-in",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "visitors",
+                "{{visit_id}}",
+                "check-in"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verification_method\": \"qr\",\n  \"code\": \"{{qr_payload}}\",\n  \"access_card_number\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Check-Out",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/visitors/{{visit_id}}/check-out",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "visitors",
+                "{{visit_id}}",
+                "check-out"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Verification History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/verification-history?page=1&per_page=20&status=Checked Out&q=",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "verification-history"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20"
+                },
+                {
+                  "key": "status",
+                  "value": "Checked Out"
+                },
+                {
+                  "key": "q",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/logout",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "logout"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Patrol Management",
+      "item": [
+        {
+          "name": "Patrol Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/security/patrol/dashboard",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "security",
+                "patrol",
+                "dashboard"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Assigned Patrols",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/security/patrol/sessions?per_page=20",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "security",
+                "patrol",
+                "sessions?per_page=20"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Patrol Detail",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/security/patrol/sessions/{{patrol_session_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "security",
+                "patrol",
+                "sessions",
+                "{{patrol_session_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Start Patrol",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/security/patrol/sessions/{{patrol_session_id}}/start",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "security",
+                "patrol",
+                "sessions",
+                "{{patrol_session_id}}",
+                "start"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Complete Checkpoint",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/security/patrol/checkpoint-visits/{{checkpoint_visit_id}}/complete",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "security",
+                "patrol",
+                "checkpoint-visits",
+                "{{checkpoint_visit_id}}",
+                "complete"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Area clear.\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Skip Checkpoint",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/security/patrol/checkpoint-visits/{{checkpoint_visit_id}}/skip",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "security",
+                "patrol",
+                "checkpoint-visits",
+                "{{checkpoint_visit_id}}",
+                "skip"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Area temporarily inaccessible.\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Complete Patrol",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/security/patrol/sessions/{{patrol_session_id}}/complete",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "security",
+                "patrol",
+                "sessions",
+                "{{patrol_session_id}}",
+                "complete"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Patrol finished.\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Patrol History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{security_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/security/patrol/history?per_page=20",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "security",
+                "patrol",
+                "history?per_page=20"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Incident Reporting",
+      "item": [
+        {
+          "name": "Incident Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/security/incidents/dashboard",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "security",
+                "incidents",
+                "dashboard"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Incident List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/security/incidents?scope=mine&per_page=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "security",
+                "incidents?scope=mine&per_page=20"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Incident History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/security/incidents/history?scope=mine&per_page=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "security",
+                "incidents",
+                "history?scope=mine&per_page=20"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Incident Detail",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/security/incidents/{{incidentId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "security",
+                "incidents",
+                "{{incidentId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Report Incident",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/security/incidents",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "security",
+                "incidents"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"property_id\": \"{{propertyId}}\",\n  \"title\": \"Emergency exit obstructed\",\n  \"description\": \"Boxes block the emergency exit.\",\n  \"category\": \"Safety\",\n  \"severity\": \"High\",\n  \"location\": \"East Emergency Exit\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Report Incident From Patrol",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/security/incidents",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "security",
+                "incidents"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patrol_checkpoint_visit_id\": \"{{checkpointVisitId}}\",\n  \"title\": \"Water leak found\",\n  \"description\": \"Water leak observed during patrol.\",\n  \"category\": \"Safety\",\n  \"severity\": \"Medium\",\n  \"location\": \"Service Corridor\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Acknowledge Incident",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/security/incidents/{{incidentId}}/acknowledge",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "security",
+                "incidents",
+                "{{incidentId}}",
+                "acknowledge"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Acknowledged by front desk.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Start Incident",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/security/incidents/{{incidentId}}/start",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "security",
+                "incidents",
+                "{{incidentId}}",
+                "start"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Checking location.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Resolve Incident",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/security/incidents/{{incidentId}}/resolve",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "security",
+                "incidents",
+                "{{incidentId}}",
+                "resolve"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Hazard removed and area secured.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Add Incident Note",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/security/incidents/{{incidentId}}/notes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "security",
+                "incidents",
+                "{{incidentId}}",
+                "notes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"CCTV footage secured.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
