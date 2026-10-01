@@ -21,14 +21,15 @@ void main() {
       expect(dependencies.enableEmergencyForegroundPolling, isFalse);
     });
 
-    test('release cannot fall back to mock mode', () {
-      expect(
-        () => AppDependencies.fromRuntimeConfig(
-          baseUrl: '',
-          isReleaseBuild: true,
-        ),
-        throwsStateError,
+    test('release without API base uses standalone mock mode', () {
+      final dependencies = AppDependencies.fromRuntimeConfig(
+        baseUrl: '',
+        isReleaseBuild: true,
       );
+
+      expect(dependencies.usesApi, isFalse);
+      expect(dependencies.enableDeviceQrScanner, isFalse);
+      expect(dependencies.enableEmergencyForegroundPolling, isFalse);
     });
 
     test('configured API base must end with canonical /api/security prefix', () {

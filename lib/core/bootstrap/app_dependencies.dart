@@ -112,12 +112,6 @@ class AppDependencies {
     final normalizedBaseUrl = baseUrl.trim();
 
     if (normalizedBaseUrl.isEmpty) {
-      if (isReleaseBuild) {
-        throw StateError(
-          'SECURITY_API_BASE_URL is required for release builds. '
-          'Mock mode is intentionally disabled in release.',
-        );
-      }
       return AppDependencies.mock();
     }
 
