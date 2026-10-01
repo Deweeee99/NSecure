@@ -1,13 +1,13 @@
-import 'package:aparthub_security/core/bootstrap/app_dependencies.dart';
-import 'package:aparthub_security/core/network/security_api_client.dart';
-import 'package:aparthub_security/features/emergency/data/api/api_emergency_alert_repository.dart';
-import 'package:aparthub_security/features/incident/data/api/api_incident_repository.dart';
-import 'package:aparthub_security/features/package/data/api/api_security_package_repository.dart';
-import 'package:aparthub_security/features/patrol/data/api/api_patrol_repository.dart';
-import 'package:aparthub_security/features/patrol/domain/models/patrol_models.dart';
-import 'package:aparthub_security/features/security/data/api/api_security_auth_repository.dart';
-import 'package:aparthub_security/features/security/data/api/api_security_dashboard_repository.dart';
-import 'package:aparthub_security/features/visitor/data/api/api_visitor_repository.dart';
+import 'package:nsecure/core/bootstrap/app_dependencies.dart';
+import 'package:nsecure/core/network/security_api_client.dart';
+import 'package:nsecure/features/emergency/data/api/api_emergency_alert_repository.dart';
+import 'package:nsecure/features/incident/data/api/api_incident_repository.dart';
+import 'package:nsecure/features/package/data/api/api_security_package_repository.dart';
+import 'package:nsecure/features/patrol/data/api/api_patrol_repository.dart';
+import 'package:nsecure/features/patrol/domain/models/patrol_models.dart';
+import 'package:nsecure/features/security/data/api/api_security_auth_repository.dart';
+import 'package:nsecure/features/security/data/api/api_security_dashboard_repository.dart';
+import 'package:nsecure/features/visitor/data/api/api_visitor_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

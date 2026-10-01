@@ -1,5 +1,5 @@
-import 'package:aparthub_security/features/security/domain/models/module_preview.dart';
-import 'package:aparthub_security/features/security/domain/models/security_module_registry.dart';
+import 'package:nsecure/features/security/domain/models/module_preview.dart';
+import 'package:nsecure/features/security/domain/models/security_module_registry.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

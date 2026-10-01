@@ -1,9 +1,9 @@
-import 'package:aparthub_security/core/theme/security_theme.dart';
-import 'package:aparthub_security/features/patrol/domain/models/patrol_models.dart';
-import 'package:aparthub_security/features/patrol/domain/repositories/patrol_repository.dart';
-import 'package:aparthub_security/features/patrol/presentation/patrol_management_screen.dart';
-import 'package:aparthub_security/features/patrol/presentation/services/patrol_photo_picker.dart';
-import 'package:aparthub_security/l10n/app_localizations.dart';
+import 'package:nsecure/core/theme/security_theme.dart';
+import 'package:nsecure/features/patrol/domain/models/patrol_models.dart';
+import 'package:nsecure/features/patrol/domain/repositories/patrol_repository.dart';
+import 'package:nsecure/features/patrol/presentation/patrol_management_screen.dart';
+import 'package:nsecure/features/patrol/presentation/services/patrol_photo_picker.dart';
+import 'package:nsecure/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -178,7 +178,7 @@ class _PhotoFlowPatrolRepository implements PatrolRepository {
           property: const PatrolPropertyRef(
             id: 1,
             code: 'SITE-A',
-            name: 'Aparthub Residence',
+            name: 'NSecure Demo Site',
           ),
           route: const PatrolRouteRef(
             id: 4,

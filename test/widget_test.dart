@@ -1,10 +1,10 @@
-import 'package:aparthub_security/app.dart';
-import 'package:aparthub_security/core/bootstrap/app_dependencies.dart';
-import 'package:aparthub_security/features/emergency/data/mock/mock_emergency_alert_repository.dart';
-import 'package:aparthub_security/features/incident/data/mock/mock_incident_repository.dart';
-import 'package:aparthub_security/features/patrol/data/mock/mock_patrol_repository.dart';
-import 'package:aparthub_security/features/package/data/mock/mock_security_package_repository.dart';
-import 'package:aparthub_security/features/visitor/data/mock/mock_visitor_repository.dart';
+import 'package:nsecure/app.dart';
+import 'package:nsecure/core/bootstrap/app_dependencies.dart';
+import 'package:nsecure/features/emergency/data/mock/mock_emergency_alert_repository.dart';
+import 'package:nsecure/features/incident/data/mock/mock_incident_repository.dart';
+import 'package:nsecure/features/patrol/data/mock/mock_patrol_repository.dart';
+import 'package:nsecure/features/package/data/mock/mock_security_package_repository.dart';
+import 'package:nsecure/features/visitor/data/mock/mock_visitor_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -27,9 +27,9 @@ Future<void> _dragListUntilMounted(
 
 void main() {
   testWidgets('Security Platform Home renders core modules', (tester) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
-    expect(find.text('Aparthub Security'), findsOneWidget);
+    expect(find.text('NSecure'), findsOneWidget);
     expect(find.text('Security Team'), findsOneWidget);
     expect(find.text("Today's Overview"), findsNothing);
     expect(find.text('Security Modules'), findsOneWidget);
@@ -48,7 +48,7 @@ void main() {
   });
 
   testWidgets('Verify tab opens active QR verification path', (tester) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await tester.tap(find.text('Verify'));
     await tester.pumpAndSettle();
@@ -60,7 +60,7 @@ void main() {
   });
 
   testWidgets('manual verification searches by Visit Code', (tester) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await _openManualSearch(tester);
 
@@ -77,7 +77,7 @@ void main() {
   });
 
   testWidgets('Manual Verify starts without seeded recent searches', (tester) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await _openManualSearch(tester);
 
@@ -91,7 +91,7 @@ void main() {
   });
 
   testWidgets('successful manual search becomes real session history', (tester) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await _openManualSearch(tester);
     await tester.enterText(
@@ -110,7 +110,7 @@ void main() {
   });
 
   testWidgets('Android system Back returns through app screens', (tester) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     final packageReceiving = find.text('Package Receiving');
     await tester.ensureVisible(packageReceiving);
@@ -142,7 +142,7 @@ void main() {
   testWidgets('manual verification shows explicit not-found state', (
     tester,
   ) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await _openManualSearch(tester);
 
@@ -160,7 +160,7 @@ void main() {
   testWidgets('demo QR resolves deterministic visitor without backend', (
     tester,
   ) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await tester.tap(find.text('Verify'));
     await tester.pumpAndSettle();
@@ -175,7 +175,7 @@ void main() {
   testWidgets('Approved visitor opens detail and completes Check-In', (
     tester,
   ) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await _searchApprovedVisitor(tester);
     await tester.tap(find.text('John Michael Doe'));
@@ -198,7 +198,7 @@ void main() {
   testWidgets('Checked-In visitor detail exposes Check-Out action', (
     tester,
   ) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await _openManualSearch(tester);
     await tester.enterText(
@@ -235,7 +235,7 @@ void main() {
   testWidgets('Expired visitor remains read-only in Visitor Detail', (
     tester,
   ) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await _openManualSearch(tester);
     await tester.enterText(
@@ -257,7 +257,7 @@ void main() {
   testWidgets('History tab renders operational filters and activity', (
     tester,
   ) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await tester.tap(find.text('History'));
     await tester.pumpAndSettle();
@@ -275,7 +275,7 @@ void main() {
   testWidgets('new Check-In becomes visible in Verification History', (
     tester,
   ) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await _searchApprovedVisitor(tester);
     await tester.tap(find.text('John Michael Doe'));
@@ -297,7 +297,7 @@ void main() {
   testWidgets('Patrol Management opens operational assigned patrol flow', (
     tester,
   ) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await tester.ensureVisible(find.text('Patrol Management'));
     await tester.tap(find.text('Patrol Management'));
@@ -339,7 +339,7 @@ void main() {
   testWidgets('Patrol History renders terminal assigned patrols', (
     tester,
   ) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await tester.ensureVisible(find.text('Patrol Management'));
     await tester.tap(find.text('Patrol Management'));
@@ -357,7 +357,7 @@ void main() {
   testWidgets('Patrol checkpoint can report an Incident and return with Issue state', (
     tester,
   ) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await tester.ensureVisible(find.text('Patrol Management'));
     await tester.tap(find.text('Patrol Management'));
@@ -435,7 +435,7 @@ void main() {
   testWidgets('Incident Reporting opens operational dashboard and detail', (
     tester,
   ) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await tester.ensureVisible(find.text('Incident Reporting'));
     await tester.tap(find.text('Incident Reporting'));
@@ -483,7 +483,7 @@ void main() {
   testWidgets('Incident Reporting creates a standalone incident', (
     tester,
   ) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await tester.ensureVisible(find.text('Incident Reporting'));
     await tester.tap(find.text('Incident Reporting'));
@@ -526,7 +526,7 @@ void main() {
   testWidgets('Incident History renders terminal incidents', (
     tester,
   ) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await tester.ensureVisible(find.text('Incident Reporting'));
     await tester.tap(find.text('Incident Reporting'));
@@ -546,7 +546,7 @@ void main() {
   });
   
   testWidgets('Emergency SOS opens operational center', (tester) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await tester.ensureVisible(find.text('Emergency SOS'));
     await tester.tap(find.text('Emergency SOS'));
@@ -574,7 +574,7 @@ void main() {
       securityPackageRepository: MockSecurityPackageRepository(),
     );
 
-    await tester.pumpWidget(AparthubSecurityApp(dependencies: dependencies));
+    await tester.pumpWidget(NSecureApp(dependencies: dependencies));
     await tester.pumpAndSettle();
 
     expect(find.byKey(const Key('emergencyPersistentModal')), findsOneWidget);
@@ -595,7 +595,7 @@ void main() {
   testWidgets('Package Receiving registers and collects through Package Center flow', (
     tester,
   ) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
 
     await tester.ensureVisible(find.text('Package Receiving'));
     await tester.tap(find.text('Package Receiving'));
@@ -678,7 +678,7 @@ void main() {
   testWidgets('More tab exposes only active production modules', (
     tester,
   ) async {
-    await tester.pumpWidget(const AparthubSecurityApp());
+    await tester.pumpWidget(const NSecureApp());
   
     await tester.tap(find.text('More'));
     await tester.pumpAndSettle();

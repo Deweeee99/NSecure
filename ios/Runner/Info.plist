@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Aparthub Security</string>
+	<string>NSecure</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,7 +15,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>aparthub_security</string>
+	<string>nsecure</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -67,8 +67,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Aparthub Security uses the photo library to attach patrol checkpoint evidence.</string>
+	<string>NSecure uses the photo library to attach patrol checkpoint evidence.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Aparthub Security uses the camera to capture patrol checkpoint evidence.</string>
+	<string>NSecure uses the camera to capture patrol checkpoint evidence.</string>
 </dict>
 </plist>

@@ -1,5 +1,5 @@
-import 'package:aparthub_security/features/package/data/mock/mock_security_package_repository.dart';
-import 'package:aparthub_security/features/package/domain/models/security_package_models.dart';
+import 'package:nsecure/features/package/data/mock/mock_security_package_repository.dart';
+import 'package:nsecure/features/package/domain/models/security_package_models.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -88,7 +88,7 @@ void main() {
             property: const SecurityPackagePropertyRef(
               id: 1,
               code: 'SITE-A',
-              name: 'Aparthub Residence',
+              name: 'NSecure Demo Site',
             ),
             resident: const SecurityPackageResidentRef(
               id: 101,

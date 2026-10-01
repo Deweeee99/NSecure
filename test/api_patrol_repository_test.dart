@@ -1,7 +1,7 @@
-import 'package:aparthub_security/core/network/security_api_client.dart';
-import 'package:aparthub_security/features/patrol/data/api/api_patrol_repository.dart';
-import 'package:aparthub_security/features/patrol/domain/models/patrol_models.dart';
-import 'package:aparthub_security/features/patrol/domain/repositories/patrol_repository.dart';
+import 'package:nsecure/core/network/security_api_client.dart';
+import 'package:nsecure/features/patrol/data/api/api_patrol_repository.dart';
+import 'package:nsecure/features/patrol/domain/models/patrol_models.dart';
+import 'package:nsecure/features/patrol/domain/repositories/patrol_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

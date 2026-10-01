@@ -18,7 +18,7 @@ class MockSecurityPackageRepository implements SecurityPackageRepository {
   static const _property = SecurityPackagePropertyRef(
     id: 1,
     code: 'SITE-A',
-    name: 'Aparthub Residence',
+    name: 'NSecure Demo Site',
   );
 
   static const _residentBudi = SecurityPackageResidentRef(

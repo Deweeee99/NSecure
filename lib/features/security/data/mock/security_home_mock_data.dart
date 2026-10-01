@@ -6,14 +6,14 @@ abstract final class SecurityHomeMockData {
     name: 'Security Team',
     username: 'security.frontdesk',
     postName: 'Front Desk • Main Lobby',
-    propertyName: 'Aparthub Residence',
+    propertyName: 'NSecure Demo Site',
     active: true,
     defaultPropertyId: 1,
     properties: <SecurityProperty>[
       SecurityProperty(
         id: 1,
         code: 'SITE-A',
-        name: 'Aparthub Residence',
+        name: 'NSecure Demo Site',
         isDefault: true,
       ),
     ],

@@ -1,6 +1,6 @@
-import 'package:aparthub_security/features/patrol/data/mock/mock_patrol_repository.dart';
-import 'package:aparthub_security/features/patrol/domain/models/patrol_models.dart';
-import 'package:aparthub_security/features/patrol/domain/repositories/patrol_repository.dart';
+import 'package:nsecure/features/patrol/data/mock/mock_patrol_repository.dart';
+import 'package:nsecure/features/patrol/domain/models/patrol_models.dart';
+import 'package:nsecure/features/patrol/domain/repositories/patrol_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const PatrolPhotoInput _validPhoto = PatrolPhotoInput(

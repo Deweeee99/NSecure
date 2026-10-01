@@ -1,7 +1,7 @@
-import 'package:aparthub_security/core/network/security_api_client.dart';
-import 'package:aparthub_security/features/emergency/data/api/api_emergency_alert_repository.dart';
-import 'package:aparthub_security/features/emergency/domain/models/emergency_alert_models.dart';
-import 'package:aparthub_security/features/emergency/domain/repositories/emergency_alert_repository.dart';
+import 'package:nsecure/core/network/security_api_client.dart';
+import 'package:nsecure/features/emergency/data/api/api_emergency_alert_repository.dart';
+import 'package:nsecure/features/emergency/domain/models/emergency_alert_models.dart';
+import 'package:nsecure/features/emergency/domain/repositories/emergency_alert_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

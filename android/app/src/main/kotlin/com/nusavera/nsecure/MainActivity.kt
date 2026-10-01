@@ -1,4 +1,4 @@
-package com.example.aparthub_security
+package com.nusavera.nsecure
 
 import io.flutter.embedding.android.FlutterActivity
 

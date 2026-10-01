@@ -1,6 +1,6 @@
-import 'package:aparthub_security/features/emergency/data/mock/mock_emergency_alert_repository.dart';
-import 'package:aparthub_security/features/emergency/domain/models/emergency_alert_models.dart';
-import 'package:aparthub_security/features/emergency/domain/repositories/emergency_alert_repository.dart';
+import 'package:nsecure/features/emergency/data/mock/mock_emergency_alert_repository.dart';
+import 'package:nsecure/features/emergency/domain/models/emergency_alert_models.dart';
+import 'package:nsecure/features/emergency/domain/repositories/emergency_alert_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

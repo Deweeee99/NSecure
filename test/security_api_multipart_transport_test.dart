@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:aparthub_security/core/network/security_api_client.dart';
+import 'package:nsecure/core/network/security_api_client.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

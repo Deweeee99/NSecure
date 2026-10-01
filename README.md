@@ -1,17 +1,21 @@
-# aparthub_security
+# NSecure
 
-A new Flutter project.
+NSecure is the standalone Flutter mobile application for security operations, extracted from the former Aparthub Security mobile codebase.
 
-## Getting Started
+## Current phase
 
-This project is a starting point for a Flutter application.
+NS-MOB-01 focuses only on standalone product identity. Existing application flows and the legacy `/api/security/...` integration are intentionally preserved for compatibility during this phase.
 
-A few resources to get you started if this is your first Flutter project:
+Backend decoupling and mock-first standalone operation are planned for NS-MOB-02.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Development
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This project is pinned to Flutter 3.47.5 through FVM.
+
+```powershell
+fvm flutter pub get
+fvm flutter gen-l10n
+fvm flutter analyze
+fvm flutter test
+fvm flutter build apk --debug
+```

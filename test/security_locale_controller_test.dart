@@ -1,4 +1,4 @@
-import 'package:aparthub_security/core/localization/security_locale_controller.dart';
+import 'package:nsecure/core/localization/security_locale_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

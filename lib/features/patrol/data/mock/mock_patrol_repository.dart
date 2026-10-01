@@ -348,7 +348,7 @@ class MockPatrolRepository implements PatrolRepository {
     const property = PatrolPropertyRef(
       id: 1,
       code: 'SITE-A',
-      name: 'Aparthub Residence',
+      name: 'NSecure Demo Site',
     );
     const officer = PatrolPartyRef(id: 12, name: 'Security Team');
     const route = PatrolRouteRef(

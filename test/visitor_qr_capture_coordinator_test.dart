@@ -1,4 +1,4 @@
-import 'package:aparthub_security/features/visitor/presentation/verification/visitor_qr_capture_coordinator.dart';
+import 'package:nsecure/features/visitor/presentation/verification/visitor_qr_capture_coordinator.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

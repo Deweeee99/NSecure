@@ -9,7 +9,7 @@ class AppLocalizationsId extends AppLocalizations {
   AppLocalizationsId([String locale = 'id']) : super(locale);
 
   @override
-  String get appTitle => 'Aparthub Security';
+  String get appTitle => 'NSecure';
 
   @override
   String get language => 'Bahasa';

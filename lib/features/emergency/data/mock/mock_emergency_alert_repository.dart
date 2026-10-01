@@ -25,7 +25,7 @@ class MockEmergencyAlertRepository implements EmergencyAlertRepository {
           property: const EmergencyPropertyRef(
             id: 1,
             code: 'SITE-A',
-            name: 'Aparthub Residence',
+            name: 'NSecure Demo Site',
           ),
           resident: const EmergencyResidentRef(
             id: 101,

@@ -1,6 +1,6 @@
-import 'package:aparthub_security/features/incident/data/mock/mock_incident_repository.dart';
-import 'package:aparthub_security/features/incident/domain/models/incident_models.dart';
-import 'package:aparthub_security/features/incident/domain/repositories/incident_repository.dart';
+import 'package:nsecure/features/incident/data/mock/mock_incident_repository.dart';
+import 'package:nsecure/features/incident/domain/models/incident_models.dart';
+import 'package:nsecure/features/incident/domain/repositories/incident_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

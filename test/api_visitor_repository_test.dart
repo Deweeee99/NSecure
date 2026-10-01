@@ -1,7 +1,7 @@
-import 'package:aparthub_security/core/network/security_api_client.dart';
-import 'package:aparthub_security/features/visitor/data/api/api_visitor_repository.dart';
-import 'package:aparthub_security/features/visitor/domain/models/visitor_visit.dart';
-import 'package:aparthub_security/features/visitor/domain/repositories/visitor_repository.dart';
+import 'package:nsecure/core/network/security_api_client.dart';
+import 'package:nsecure/features/visitor/data/api/api_visitor_repository.dart';
+import 'package:nsecure/features/visitor/domain/models/visitor_visit.dart';
+import 'package:nsecure/features/visitor/domain/repositories/visitor_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

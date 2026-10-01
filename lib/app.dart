@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:aparthub_security/l10n/app_localizations.dart';
+import 'package:nsecure/l10n/app_localizations.dart';
 
 import 'core/bootstrap/app_dependencies.dart';
 import 'core/localization/security_locale_controller.dart';
@@ -10,16 +10,16 @@ import 'features/security/data/mock/security_home_mock_data.dart';
 import 'features/security/presentation/auth/security_auth_gate.dart';
 import 'features/security/presentation/shell/security_app_shell.dart';
 
-class AparthubSecurityApp extends StatefulWidget {
-  const AparthubSecurityApp({super.key, this.dependencies});
+class NSecureApp extends StatefulWidget {
+  const NSecureApp({super.key, this.dependencies});
 
   final AppDependencies? dependencies;
 
   @override
-  State<AparthubSecurityApp> createState() => _AparthubSecurityAppState();
+  State<NSecureApp> createState() => _NSecureAppState();
 }
 
-class _AparthubSecurityAppState extends State<AparthubSecurityApp> {
+class _NSecureAppState extends State<NSecureApp> {
   late final AppDependencies _dependencies;
   late final SecurityLocaleController _localeController;
 

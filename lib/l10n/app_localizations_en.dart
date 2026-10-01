@@ -9,7 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appTitle => 'Aparthub Security';
+  String get appTitle => 'NSecure';
 
   @override
   String get language => 'Language';

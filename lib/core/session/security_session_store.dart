@@ -12,7 +12,7 @@ class FlutterSecureSecuritySessionStore implements SecuritySessionStore {
   FlutterSecureSecuritySessionStore({FlutterSecureStorage? storage})
       : _storage = storage ?? FlutterSecureStorage();
 
-  static const _tokenKey = 'aparthub_security_sanctum_token_v1';
+  static const _tokenKey = 'nsecure_sanctum_token_v1';
 
   final FlutterSecureStorage _storage;
 

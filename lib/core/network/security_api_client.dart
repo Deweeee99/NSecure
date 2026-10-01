@@ -171,7 +171,7 @@ class IoSecurityApiClient
       }
 
       final boundary =
-          '----AparthubSecurity${DateTime.now().microsecondsSinceEpoch}';
+          '----NSecure${DateTime.now().microsecondsSinceEpoch}';
       final body = BytesBuilder(copy: false);
 
       void addText(String value) {

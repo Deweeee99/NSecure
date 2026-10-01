@@ -1,6 +1,6 @@
-import 'package:aparthub_security/core/network/security_api_client.dart';
-import 'package:aparthub_security/features/security/data/api/api_security_dashboard_repository.dart';
-import 'package:aparthub_security/features/security/domain/repositories/security_dashboard_repository.dart';
+import 'package:nsecure/core/network/security_api_client.dart';
+import 'package:nsecure/features/security/data/api/api_security_dashboard_repository.dart';
+import 'package:nsecure/features/security/domain/repositories/security_dashboard_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -1,9 +1,9 @@
-import 'package:aparthub_security/core/network/security_api_client.dart';
-import 'package:aparthub_security/features/visitor/domain/models/visitor_visit.dart';
-import 'package:aparthub_security/features/visitor/domain/repositories/visitor_repository.dart';
-import 'package:aparthub_security/features/visitor/presentation/history/verification_history_flow.dart';
-import 'package:aparthub_security/features/visitor/presentation/verification/visitor_verification_flow.dart';
-import 'package:aparthub_security/l10n/app_localizations.dart';
+import 'package:nsecure/core/network/security_api_client.dart';
+import 'package:nsecure/features/visitor/domain/models/visitor_visit.dart';
+import 'package:nsecure/features/visitor/domain/repositories/visitor_repository.dart';
+import 'package:nsecure/features/visitor/presentation/history/verification_history_flow.dart';
+import 'package:nsecure/features/visitor/presentation/verification/visitor_verification_flow.dart';
+import 'package:nsecure/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

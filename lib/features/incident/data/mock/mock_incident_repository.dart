@@ -116,7 +116,7 @@ class MockIncidentRepository implements IncidentRepository {
     final property = const IncidentPropertyRef(
       id: 1,
       code: 'SITE-A',
-      name: 'Aparthub Residence',
+      name: 'NSecure Demo Site',
     );
     _incidents[id] = IncidentRecord(
       incidentId: id,
@@ -396,7 +396,7 @@ class MockIncidentRepository implements IncidentRepository {
     const property = IncidentPropertyRef(
       id: 1,
       code: 'SITE-A',
-      name: 'Aparthub Residence',
+      name: 'NSecure Demo Site',
     );
     final openAt = DateTime.parse('2026-08-12T22:15:00+07:00');
     final activeAt = DateTime.parse('2026-08-12T21:42:00+07:00');
