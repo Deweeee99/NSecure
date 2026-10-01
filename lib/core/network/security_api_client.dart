@@ -225,7 +225,7 @@ class IoSecurityApiClient
       request.add(payload);
 
       final response = await request.close().timeout(requestTimeout);
-      return _decodeResponse(response);
+      return await _decodeResponse(response);
     } on SecurityApiException {
       rethrow;
     } on TimeoutException {
@@ -297,7 +297,7 @@ class IoSecurityApiClient
       }
 
       final response = await request.close().timeout(requestTimeout);
-      return _decodeResponse(response);
+      return await _decodeResponse(response);
     } on SecurityApiException {
       rethrow;
     } on TimeoutException {

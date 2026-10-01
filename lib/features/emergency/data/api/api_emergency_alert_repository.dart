@@ -47,7 +47,7 @@ class ApiEmergencyAlertRepository implements EmergencyAlertRepository {
       final envelope = await _client.post(
         '/emergency-alerts/$emergencyAlertId/acknowledge',
       );
-      return _decodeMutationOrReload(envelope, emergencyAlertId);
+      return await _decodeMutationOrReload(envelope, emergencyAlertId);
     } on SecurityApiException catch (error) {
       throw _mapError(error);
     } on FormatException catch (error) {
@@ -74,7 +74,7 @@ class ApiEmergencyAlertRepository implements EmergencyAlertRepository {
         '/emergency-alerts/$emergencyAlertId/resolve',
         body: body,
       );
-      return _decodeMutationOrReload(envelope, emergencyAlertId);
+      return await _decodeMutationOrReload(envelope, emergencyAlertId);
     } on SecurityApiException catch (error) {
       throw _mapError(error);
     } on FormatException catch (error) {
