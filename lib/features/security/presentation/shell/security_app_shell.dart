@@ -21,10 +21,12 @@ import '../../../visitor/presentation/history/verification_history_flow.dart';
 import '../../../visitor/presentation/verification/visitor_verification_flow.dart';
 import '../../data/mock/security_home_mock_data.dart';
 import '../../domain/models/security_dashboard.dart';
+import '../../domain/models/security_task_preview.dart';
 import '../../domain/models/security_user.dart';
 import '../../domain/repositories/security_dashboard_repository.dart';
 import '../concepts/security_module_catalog_screen.dart';
 import '../home/security_home_screen.dart';
+import '../task/security_task_response_screen.dart';
 
 class SecurityAppShell extends StatefulWidget {
   const SecurityAppShell({
@@ -68,6 +70,8 @@ class _SecurityAppShellState extends State<SecurityAppShell>
   bool _incidentOpen = false;
   bool _emergencyOpen = false;
   bool _packageOpen = false;
+  SecurityTaskPreview? _selectedTask;
+  late List<SecurityTaskPreview> _activeTasks;
   bool _incidentReturnsToPatrol = false;
   IncidentCreateContext? _incidentCreateContext;
   int? _initialEmergencyAlertId;
@@ -89,6 +93,9 @@ class _SecurityAppShellState extends State<SecurityAppShell>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    _activeTasks = widget.showMockOperationalPreview
+        ? List<SecurityTaskPreview>.of(SecurityHomeMockData.activeTasks)
+        : <SecurityTaskPreview>[];
     unawaited(_refreshEmergencyAlerts());
     unawaited(_refreshDashboard());
     if (widget.enableEmergencyForegroundPolling) {
@@ -201,6 +208,15 @@ class _SecurityAppShellState extends State<SecurityAppShell>
   }
 
   Widget _buildHomeArea() {
+    final selectedTask = _selectedTask;
+    if (selectedTask != null) {
+      return SecurityTaskResponseScreen(
+        task: selectedTask,
+        onBackHome: _closeTaskResponse,
+        onCompleted: _completeTaskResponse,
+      );
+    }
+
     if (_emergencyOpen) {
       return EmergencyManagementScreen(
         repository: widget.emergencyAlertRepository,
@@ -240,9 +256,8 @@ class _SecurityAppShellState extends State<SecurityAppShell>
 
     return SecurityHomeScreen(
       user: widget.securityUser,
-      activeTasks: widget.showMockOperationalPreview
-          ? SecurityHomeMockData.activeTasks
-          : const [],
+      activeTasks: _activeTasks,
+      onOpenTaskResponse: _openTaskResponse,
       dashboard: _dashboard,
       dashboardLoading: _dashboardLoading,
       dashboardErrorMessage: _dashboardFailure == null
@@ -365,7 +380,8 @@ class _SecurityAppShellState extends State<SecurityAppShell>
       !_patrolOpen &&
       !_incidentOpen &&
       !_emergencyOpen &&
-      !_packageOpen;
+      !_packageOpen &&
+      _selectedTask == null;
 
   void _handleSystemBack() {
     if (_activeEmergencyAlerts.isNotEmpty) return;
@@ -384,6 +400,11 @@ class _SecurityAppShellState extends State<SecurityAppShell>
 
     if (_currentIndex == 3) {
       _selectTab(0);
+      return;
+    }
+
+    if (_selectedTask != null) {
+      _closeTaskResponse();
       return;
     }
 
@@ -414,7 +435,8 @@ class _SecurityAppShellState extends State<SecurityAppShell>
         (_patrolOpen ||
             _incidentOpen ||
             _emergencyOpen ||
-            _packageOpen)) {
+            _packageOpen ||
+            _selectedTask != null)) {
       setState(_resetHomeRoutes);
       return;
     }
@@ -432,9 +454,48 @@ class _SecurityAppShellState extends State<SecurityAppShell>
     _incidentOpen = false;
     _emergencyOpen = false;
     _packageOpen = false;
+    _selectedTask = null;
     _incidentReturnsToPatrol = false;
     _incidentCreateContext = null;
     _initialEmergencyAlertId = null;
+  }
+
+  void _openTaskResponse(SecurityTaskPreview task) {
+    switch (task.type) {
+      case SecurityTaskPreviewType.patrol:
+        _openPatrol();
+        return;
+      case SecurityTaskPreviewType.visitor:
+        _selectTab(1);
+        return;
+      case SecurityTaskPreviewType.incident:
+        _openIncident();
+        return;
+      case SecurityTaskPreviewType.dispatch:
+        setState(() {
+          _currentIndex = 0;
+          _resetHomeRoutes();
+          _selectedTask = task;
+        });
+        return;
+    }
+  }
+
+  void _closeTaskResponse() {
+    setState(() {
+      _currentIndex = 0;
+      _selectedTask = null;
+    });
+  }
+
+  void _completeTaskResponse(SecurityTaskPreview task) {
+    setState(() {
+      _currentIndex = 0;
+      _activeTasks = _activeTasks
+          .where((item) => item.id != task.id)
+          .toList(growable: false);
+      _selectedTask = null;
+    });
   }
 
   void _openPatrol() {

@@ -65,6 +65,8 @@
   "taskVisitorSubtitle": "A visitor is waiting for verification at the main lobby",
   "taskIncidentTitle": "Review Incident",
   "taskIncidentSubtitle": "Security incident requires attention in the basement area",
+  "taskDispatchTitle": "Inspect Parking Area",
+  "taskDispatchSubtitle": "Basement B1 • Follow up on suspicious activity",
   "platform": "Platform",
   "todaysVisitors": "Today's Visitors",
   "checkedIn": "Checked-In",
@@ -543,5 +545,30 @@
   "pickupRecipientNotRecorded": "Pickup recipient not recorded",
   "recordPickupRecipient": "Record Pickup Recipient",
   "pickupRecipientCorrectionHint": "This collected package has no pickup recipient recorded. Add the missing recipient without changing the original collection time or processor.",
-  "packageCollectionResidentUnavailable": "The package resident is no longer available for collection."
+  "packageCollectionResidentUnavailable": "The package resident is no longer available for collection.",
+  "taskResponseTitle": "Task Response",
+  "taskWorkflowTitle": "Response Progress",
+  "taskStageAssigned": "Task received",
+  "taskStageAccepted": "Task accepted",
+  "taskStageEnRoute": "Heading to location",
+  "taskStageArrived": "Arrived at location",
+  "taskStageHandling": "Handling in progress",
+  "taskActionAccept": "Accept Task",
+  "taskActionEnRoute": "Head to Location",
+  "taskActionArrive": "Arrived at Location",
+  "taskActionHandle": "Start Handling",
+  "taskEvidenceTitle": "Evidence",
+  "taskActionAttachEvidence": "Attach Evidence",
+  "taskEvidenceRequired": "Attach evidence before completing the task.",
+  "taskActionComplete": "Complete Task",
+  "taskCompletedTitle": "Task Completed",
+  "taskCompletedMessage": "Task {taskId} has been completed and removed from Active Tasks.",
+  "@taskCompletedMessage": {
+    "placeholders": {
+      "taskId": {
+        "type": "String"
+      }
+    }
+  },
+  "taskBackToHome": "Back to Home"
 }

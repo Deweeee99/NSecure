@@ -211,6 +211,13 @@ class AppLocalizationsId extends AppLocalizations {
       'Insiden keamanan perlu ditangani di area basement';
 
   @override
+  String get taskDispatchTitle => 'Periksa Area Parkir';
+
+  @override
+  String get taskDispatchSubtitle =>
+      'Basement B1 • Tindak lanjuti aktivitas mencurigakan';
+
+  @override
   String get platform => 'Platform';
 
   @override
@@ -1778,4 +1785,61 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get packageCollectionResidentUnavailable =>
       'Resident paket sudah tidak tersedia untuk proses pengambilan.';
+
+  @override
+  String get taskResponseTitle => 'Respons Tugas';
+
+  @override
+  String get taskWorkflowTitle => 'Progres Respons';
+
+  @override
+  String get taskStageAssigned => 'Tugas diterima';
+
+  @override
+  String get taskStageAccepted => 'Tugas diambil';
+
+  @override
+  String get taskStageEnRoute => 'Menuju lokasi';
+
+  @override
+  String get taskStageArrived => 'Tiba di lokasi';
+
+  @override
+  String get taskStageHandling => 'Penanganan berlangsung';
+
+  @override
+  String get taskActionAccept => 'Terima Tugas';
+
+  @override
+  String get taskActionEnRoute => 'Menuju Lokasi';
+
+  @override
+  String get taskActionArrive => 'Tiba di Lokasi';
+
+  @override
+  String get taskActionHandle => 'Mulai Penanganan';
+
+  @override
+  String get taskEvidenceTitle => 'Bukti Penanganan';
+
+  @override
+  String get taskActionAttachEvidence => 'Lampirkan Bukti';
+
+  @override
+  String get taskEvidenceRequired =>
+      'Lampirkan bukti sebelum menyelesaikan tugas.';
+
+  @override
+  String get taskActionComplete => 'Selesaikan Tugas';
+
+  @override
+  String get taskCompletedTitle => 'Tugas Selesai';
+
+  @override
+  String taskCompletedMessage(String taskId) {
+    return 'Tugas $taskId telah selesai dan dihapus dari Tugas Aktif.';
+  }
+
+  @override
+  String get taskBackToHome => 'Kembali ke Beranda';
 }

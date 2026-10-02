@@ -212,6 +212,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'Security incident requires attention in the basement area';
 
   @override
+  String get taskDispatchTitle => 'Inspect Parking Area';
+
+  @override
+  String get taskDispatchSubtitle =>
+      'Basement B1 • Follow up on suspicious activity';
+
+  @override
   String get platform => 'Platform';
 
   @override
@@ -1788,4 +1795,61 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get packageCollectionResidentUnavailable =>
       'The package resident is no longer available for collection.';
+
+  @override
+  String get taskResponseTitle => 'Task Response';
+
+  @override
+  String get taskWorkflowTitle => 'Response Progress';
+
+  @override
+  String get taskStageAssigned => 'Task received';
+
+  @override
+  String get taskStageAccepted => 'Task accepted';
+
+  @override
+  String get taskStageEnRoute => 'Heading to location';
+
+  @override
+  String get taskStageArrived => 'Arrived at location';
+
+  @override
+  String get taskStageHandling => 'Handling in progress';
+
+  @override
+  String get taskActionAccept => 'Accept Task';
+
+  @override
+  String get taskActionEnRoute => 'Head to Location';
+
+  @override
+  String get taskActionArrive => 'Arrived at Location';
+
+  @override
+  String get taskActionHandle => 'Start Handling';
+
+  @override
+  String get taskEvidenceTitle => 'Evidence';
+
+  @override
+  String get taskActionAttachEvidence => 'Attach Evidence';
+
+  @override
+  String get taskEvidenceRequired =>
+      'Attach evidence before completing the task.';
+
+  @override
+  String get taskActionComplete => 'Complete Task';
+
+  @override
+  String get taskCompletedTitle => 'Task Completed';
+
+  @override
+  String taskCompletedMessage(String taskId) {
+    return 'Task $taskId has been completed and removed from Active Tasks.';
+  }
+
+  @override
+  String get taskBackToHome => 'Back to Home';
 }

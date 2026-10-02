@@ -36,6 +36,7 @@ void main() {
     expect(find.text('Continue Patrol'), findsOneWidget);
     expect(find.text('Verify Visitor'), findsOneWidget);
     expect(find.text('Review Incident'), findsOneWidget);
+    expect(find.text('Inspect Parking Area'), findsOneWidget);
     expect(find.text('Quick Actions'), findsOneWidget);
 
     expect(find.text('Visitor Verification'), findsOneWidget);
@@ -49,20 +50,81 @@ void main() {
 
     expect(find.text('ACTIVE'), findsOneWidget);
     expect(find.text('WAITING'), findsOneWidget);
-    expect(find.text('PRIORITY'), findsOneWidget);
+    expect(find.text('PRIORITY'), findsNWidgets(2));
     expect(find.text('COMING SOON'), findsNothing);
   });
 
-  testWidgets('Active task preview routes into existing operational flow', (
-    tester,
-  ) async {
+  testWidgets('Patrol Active Task opens Patrol Management', (tester) async {
     await tester.pumpWidget(const NSecureApp());
 
     await tester.tap(find.byKey(const Key('activeTask_TASK-PATROL-001')));
     await tester.pumpAndSettle();
 
     expect(find.text('Patrol Dashboard'), findsOneWidget);
-    expect(find.text('Assigned Patrols'), findsOneWidget);
+    expect(find.text('Task Response'), findsNothing);
+  });
+
+  testWidgets('Visitor Active Task opens Visitor Verification', (tester) async {
+    await tester.pumpWidget(const NSecureApp());
+
+    await tester.tap(find.byKey(const Key('activeTask_TASK-VISITOR-001')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Scan QR'), findsOneWidget);
+    expect(find.text('Task Response'), findsNothing);
+  });
+
+  testWidgets('Incident Active Task opens Incident Reporting', (tester) async {
+    await tester.pumpWidget(const NSecureApp());
+
+    await tester.tap(find.byKey(const Key('activeTask_TASK-INCIDENT-001')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Incident Reporting'), findsOneWidget);
+    expect(find.text('Task Response'), findsNothing);
+  });
+
+  testWidgets('Task Response completes mock lifecycle and leaves Active Tasks', (
+    tester,
+  ) async {
+    await tester.pumpWidget(const NSecureApp());
+
+    final dispatchTask = find.byKey(
+      const Key('activeTask_TASK-DISPATCH-001'),
+    );
+    await tester.ensureVisible(dispatchTask);
+    await tester.pumpAndSettle();
+    await tester.tap(dispatchTask);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Task Response'), findsOneWidget);
+    expect(find.text('TASK-DISPATCH-001'), findsOneWidget);
+
+    for (var step = 0; step < 4; step++) {
+      await tester.ensureVisible(find.byKey(const Key('taskPrimaryAction')));
+      await tester.tap(find.byKey(const Key('taskPrimaryAction')));
+      await tester.pumpAndSettle();
+    }
+
+    expect(find.text('Evidence'), findsOneWidget);
+    expect(find.text('Complete Task'), findsOneWidget);
+
+    await tester.ensureVisible(find.byKey(const Key('taskAttachEvidence')));
+    await tester.tap(find.byKey(const Key('taskAttachEvidence')));
+    await tester.pumpAndSettle();
+
+    await tester.ensureVisible(find.byKey(const Key('taskPrimaryAction')));
+    await tester.tap(find.byKey(const Key('taskPrimaryAction')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Task Completed'), findsOneWidget);
+    await tester.tap(find.byKey(const Key('taskBackHome')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Active Tasks'), findsOneWidget);
+    expect(find.byKey(const Key('activeTask_TASK-DISPATCH-001')), findsNothing);
+    expect(find.byKey(const Key('activeTask_TASK-PATROL-001')), findsOneWidget);
+    expect(find.byKey(const Key('activeTask_TASK-VISITOR-001')), findsOneWidget);
   });
 
   testWidgets('Verify tab opens active QR verification path', (tester) async {

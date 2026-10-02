@@ -488,6 +488,18 @@ abstract class AppLocalizations {
   /// **'Security incident requires attention in the basement area'**
   String get taskIncidentSubtitle;
 
+  /// No description provided for @taskDispatchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Inspect Parking Area'**
+  String get taskDispatchTitle;
+
+  /// No description provided for @taskDispatchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Basement B1 • Follow up on suspicious activity'**
+  String get taskDispatchSubtitle;
+
   /// No description provided for @platform.
   ///
   /// In en, this message translates to:
@@ -3361,6 +3373,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The package resident is no longer available for collection.'**
   String get packageCollectionResidentUnavailable;
+
+  /// No description provided for @taskResponseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Task Response'**
+  String get taskResponseTitle;
+
+  /// No description provided for @taskWorkflowTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Response Progress'**
+  String get taskWorkflowTitle;
+
+  /// No description provided for @taskStageAssigned.
+  ///
+  /// In en, this message translates to:
+  /// **'Task received'**
+  String get taskStageAssigned;
+
+  /// No description provided for @taskStageAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Task accepted'**
+  String get taskStageAccepted;
+
+  /// No description provided for @taskStageEnRoute.
+  ///
+  /// In en, this message translates to:
+  /// **'Heading to location'**
+  String get taskStageEnRoute;
+
+  /// No description provided for @taskStageArrived.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrived at location'**
+  String get taskStageArrived;
+
+  /// No description provided for @taskStageHandling.
+  ///
+  /// In en, this message translates to:
+  /// **'Handling in progress'**
+  String get taskStageHandling;
+
+  /// No description provided for @taskActionAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept Task'**
+  String get taskActionAccept;
+
+  /// No description provided for @taskActionEnRoute.
+  ///
+  /// In en, this message translates to:
+  /// **'Head to Location'**
+  String get taskActionEnRoute;
+
+  /// No description provided for @taskActionArrive.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrived at Location'**
+  String get taskActionArrive;
+
+  /// No description provided for @taskActionHandle.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Handling'**
+  String get taskActionHandle;
+
+  /// No description provided for @taskEvidenceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Evidence'**
+  String get taskEvidenceTitle;
+
+  /// No description provided for @taskActionAttachEvidence.
+  ///
+  /// In en, this message translates to:
+  /// **'Attach Evidence'**
+  String get taskActionAttachEvidence;
+
+  /// No description provided for @taskEvidenceRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Attach evidence before completing the task.'**
+  String get taskEvidenceRequired;
+
+  /// No description provided for @taskActionComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete Task'**
+  String get taskActionComplete;
+
+  /// No description provided for @taskCompletedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Task Completed'**
+  String get taskCompletedTitle;
+
+  /// No description provided for @taskCompletedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Task {taskId} has been completed and removed from Active Tasks.'**
+  String taskCompletedMessage(String taskId);
+
+  /// No description provided for @taskBackToHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Home'**
+  String get taskBackToHome;
 }
 
 class _AppLocalizationsDelegate

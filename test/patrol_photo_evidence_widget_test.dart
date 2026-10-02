@@ -62,8 +62,8 @@ void main() {
     'Complete checkpoint chooses photo, previews it, and renders proof after refresh',
     (tester) async {
       // Keep this regression deterministic: picker selection and preview
-      // rendering are injected. The production default still renders the real
-      // local file with Image.file.
+      // rendering are injected. Production uses a web-safe URL preview on web
+      // and a local file preview on mobile/desktop.
       const selectedPhoto = PatrolPhotoInput(
         path: 'test://patrol-checkpoint.png',
         originalName: 'patrol_checkpoint.png',

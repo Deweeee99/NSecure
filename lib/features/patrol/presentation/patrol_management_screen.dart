@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/localization/app_localizations_x.dart';
@@ -1305,25 +1306,7 @@ class _CheckpointEvidenceDialogState extends State<_CheckpointEvidenceDialog> {
                     child: KeyedSubtree(
                       key: const Key('checkpointEvidencePreview'),
                       child: widget.photoPreviewBuilder?.call(context, photo) ??
-                          Image.file(
-                            File(photo.path),
-                            fit: BoxFit.cover,
-                            gaplessPlayback: true,
-                            errorBuilder: (context, error, stackTrace) =>
-                                Container(
-                              color: SecurityColors.surfaceMuted,
-                              alignment: Alignment.center,
-                              child: Padding(
-                                padding: const EdgeInsets.all(
-                                  SecuritySpacing.md,
-                                ),
-                                child: Text(
-                                  context.l10n.checkpointPhotoUnavailable,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ),
-                          ),
+                          _PatrolLocalPhotoPreview(photo: photo),
                     ),
                   ),
                 ),
@@ -1485,6 +1468,49 @@ class _CheckpointEvidenceDialogState extends State<_CheckpointEvidenceDialog> {
         notes: notes.isEmpty ? null : notes,
         photo: _photo,
       ),
+    );
+  }
+}
+
+class _PatrolLocalPhotoPreview extends StatelessWidget {
+  const _PatrolLocalPhotoPreview({required this.photo});
+
+  final PatrolPhotoInput photo;
+
+  @override
+  Widget build(BuildContext context) {
+    Widget errorBuilder(
+      BuildContext context,
+      Object error,
+      StackTrace? stackTrace,
+    ) {
+      return Container(
+        color: SecurityColors.surfaceMuted,
+        alignment: Alignment.center,
+        child: Padding(
+          padding: const EdgeInsets.all(SecuritySpacing.md),
+          child: Text(
+            context.l10n.checkpointPhotoUnavailable,
+            textAlign: TextAlign.center,
+          ),
+        ),
+      );
+    }
+
+    if (kIsWeb) {
+      return Image.network(
+        photo.path,
+        fit: BoxFit.cover,
+        gaplessPlayback: true,
+        errorBuilder: errorBuilder,
+      );
+    }
+
+    return Image.file(
+      File(photo.path),
+      fit: BoxFit.cover,
+      gaplessPlayback: true,
+      errorBuilder: errorBuilder,
     );
   }
 }

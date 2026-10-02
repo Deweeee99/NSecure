@@ -65,6 +65,8 @@
   "taskVisitorSubtitle": "Tamu menunggu verifikasi di lobby utama",
   "taskIncidentTitle": "Tinjau Insiden",
   "taskIncidentSubtitle": "Insiden keamanan perlu ditangani di area basement",
+  "taskDispatchTitle": "Periksa Area Parkir",
+  "taskDispatchSubtitle": "Basement B1 • Tindak lanjuti aktivitas mencurigakan",
   "platform": "Platform",
   "todaysVisitors": "Tamu Hari Ini",
   "checkedIn": "Sudah Check-In",
@@ -543,5 +545,30 @@
   "pickupRecipientNotRecorded": "Penerima paket belum tercatat",
   "recordPickupRecipient": "Catat Penerima Paket",
   "pickupRecipientCorrectionHint": "Paket ini sudah berstatus diambil tetapi penerimanya belum tercatat. Tambahkan penerima tanpa mengubah waktu pengambilan atau petugas pemroses.",
-  "packageCollectionResidentUnavailable": "Resident paket sudah tidak tersedia untuk proses pengambilan."
+  "packageCollectionResidentUnavailable": "Resident paket sudah tidak tersedia untuk proses pengambilan.",
+  "taskResponseTitle": "Respons Tugas",
+  "taskWorkflowTitle": "Progres Respons",
+  "taskStageAssigned": "Tugas diterima",
+  "taskStageAccepted": "Tugas diambil",
+  "taskStageEnRoute": "Menuju lokasi",
+  "taskStageArrived": "Tiba di lokasi",
+  "taskStageHandling": "Penanganan berlangsung",
+  "taskActionAccept": "Terima Tugas",
+  "taskActionEnRoute": "Menuju Lokasi",
+  "taskActionArrive": "Tiba di Lokasi",
+  "taskActionHandle": "Mulai Penanganan",
+  "taskEvidenceTitle": "Bukti Penanganan",
+  "taskActionAttachEvidence": "Lampirkan Bukti",
+  "taskEvidenceRequired": "Lampirkan bukti sebelum menyelesaikan tugas.",
+  "taskActionComplete": "Selesaikan Tugas",
+  "taskCompletedTitle": "Tugas Selesai",
+  "taskCompletedMessage": "Tugas {taskId} telah selesai dan dihapus dari Tugas Aktif.",
+  "@taskCompletedMessage": {
+    "placeholders": {
+      "taskId": {
+        "type": "String"
+      }
+    }
+  },
+  "taskBackToHome": "Kembali ke Beranda"
 }

@@ -2,6 +2,7 @@ enum SecurityTaskPreviewType {
   patrol,
   visitor,
   incident,
+  dispatch,
 }
 
 enum SecurityTaskPreviewStatus {

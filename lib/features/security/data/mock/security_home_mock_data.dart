@@ -18,6 +18,11 @@ abstract final class SecurityHomeMockData {
       type: SecurityTaskPreviewType.incident,
       status: SecurityTaskPreviewStatus.attention,
     ),
+    SecurityTaskPreview(
+      id: 'TASK-DISPATCH-001',
+      type: SecurityTaskPreviewType.dispatch,
+      status: SecurityTaskPreviewStatus.attention,
+    ),
   ];
 
   static const user = SecurityUser(

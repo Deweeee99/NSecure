@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+  import 'package:flutter/material.dart';
 
 import '../../../../core/localization/app_localizations_x.dart';
 import '../../../../core/theme/security_tokens.dart';
@@ -10,6 +10,7 @@ import '../../domain/models/security_user.dart';
 
 class SecurityHomeScreen extends StatelessWidget {
   const SecurityHomeScreen({
+    required this.onOpenTaskResponse,
     required this.onOpenVisitorVerification,
     required this.onOpenPatrolManagement,
     required this.onOpenIncidentReporting,
@@ -25,6 +26,7 @@ class SecurityHomeScreen extends StatelessWidget {
     super.key,
   });
 
+  final ValueChanged<SecurityTaskPreview> onOpenTaskResponse;
   final VoidCallback onOpenVisitorVerification;
   final VoidCallback onOpenPatrolManagement;
   final VoidCallback onOpenIncidentReporting;
@@ -105,7 +107,7 @@ class SecurityHomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: SecuritySpacing.sm),
                   child: _ActiveTaskCard(
                     task: task,
-                    onTap: () => _handleTaskTap(task),
+                    onTap: () => onOpenTaskResponse(task),
                   ),
                 ),
               ),
@@ -167,17 +169,6 @@ class SecurityHomeScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _handleTaskTap(SecurityTaskPreview task) {
-    switch (task.type) {
-      case SecurityTaskPreviewType.patrol:
-        onOpenPatrolManagement();
-      case SecurityTaskPreviewType.visitor:
-        onOpenVisitorVerification();
-      case SecurityTaskPreviewType.incident:
-        onOpenIncidentReporting();
-    }
   }
 
   void _handleModuleTap(ModulePreview module) {
@@ -279,6 +270,7 @@ String _taskTitle(BuildContext context, SecurityTaskPreviewType type) =>
       SecurityTaskPreviewType.patrol => context.l10n.taskPatrolTitle,
       SecurityTaskPreviewType.visitor => context.l10n.taskVisitorTitle,
       SecurityTaskPreviewType.incident => context.l10n.taskIncidentTitle,
+      SecurityTaskPreviewType.dispatch => context.l10n.taskDispatchTitle,
     };
 
 String _taskSubtitle(BuildContext context, SecurityTaskPreviewType type) =>
@@ -286,6 +278,7 @@ String _taskSubtitle(BuildContext context, SecurityTaskPreviewType type) =>
       SecurityTaskPreviewType.patrol => context.l10n.taskPatrolSubtitle,
       SecurityTaskPreviewType.visitor => context.l10n.taskVisitorSubtitle,
       SecurityTaskPreviewType.incident => context.l10n.taskIncidentSubtitle,
+      SecurityTaskPreviewType.dispatch => context.l10n.taskDispatchSubtitle,
     };
 
 String _taskStatusLabel(
@@ -302,6 +295,7 @@ IconData _taskIcon(SecurityTaskPreviewType type) => switch (type) {
       SecurityTaskPreviewType.patrol => Icons.shield_outlined,
       SecurityTaskPreviewType.visitor => Icons.qr_code_scanner_rounded,
       SecurityTaskPreviewType.incident => Icons.assignment_late_outlined,
+      SecurityTaskPreviewType.dispatch => Icons.location_searching_rounded,
     };
 
 Color _taskStatusColor(SecurityTaskPreviewStatus status) => switch (status) {
