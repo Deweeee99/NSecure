@@ -84,6 +84,37 @@ void main() {
     expect(find.text('Task Response'), findsNothing);
   });
 
+  testWidgets('Dispatch Active Task opens detail with priority metadata', (
+    tester,
+  ) async {
+    await tester.pumpWidget(const NSecureApp());
+
+    final dispatchTask = find.byKey(
+      const Key('activeTask_TASK-DISPATCH-001'),
+    );
+    await tester.ensureVisible(dispatchTask);
+    await tester.pumpAndSettle();
+    await tester.tap(dispatchTask);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Task Detail'), findsOneWidget);
+    expect(find.text('TASK-DISPATCH-001'), findsOneWidget);
+    expect(find.text('Basement B1'), findsNWidgets(2));
+    expect(find.text('HIGH'), findsNWidgets(2));
+    expect(find.text('Command Center'), findsOneWidget);
+    expect(find.text('2 Oct 2026 • 11:30'), findsOneWidget);
+    expect(find.text('AWAITING RESPONSE'), findsOneWidget);
+    expect(find.text('Respond to Task'), findsOneWidget);
+
+    await tester.ensureVisible(
+      find.byKey(const Key('taskDetailRespondButton')),
+    );
+    await tester.tap(find.byKey(const Key('taskDetailRespondButton')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Task Response'), findsOneWidget);
+  });
+
   testWidgets('Task Response completes mock lifecycle and leaves Active Tasks', (
     tester,
   ) async {
@@ -95,6 +126,13 @@ void main() {
     await tester.ensureVisible(dispatchTask);
     await tester.pumpAndSettle();
     await tester.tap(dispatchTask);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Task Detail'), findsOneWidget);
+    await tester.ensureVisible(
+      find.byKey(const Key('taskDetailRespondButton')),
+    );
+    await tester.tap(find.byKey(const Key('taskDetailRespondButton')));
     await tester.pumpAndSettle();
 
     expect(find.text('Task Response'), findsOneWidget);

@@ -1797,13 +1797,59 @@ class AppLocalizationsEn extends AppLocalizations {
       'The package resident is no longer available for collection.';
 
   @override
+  String get taskDetailTitle => 'Task Detail';
+
+  @override
+  String get taskDetailInformation => 'Task Information';
+
+  @override
+  String get taskDetailLocation => 'Location';
+
+  @override
+  String get taskDetailPriority => 'Priority';
+
+  @override
+  String get taskDetailSource => 'Source';
+
+  @override
+  String get taskDetailCreatedAt => 'Created';
+
+  @override
+  String get taskDetailStatus => 'Status';
+
+  @override
+  String get taskDetailStatusAwaitingResponse => 'AWAITING RESPONSE';
+
+  @override
+  String get taskDetailInstruction => 'Instruction';
+
+  @override
+  String get taskDispatchInstruction =>
+      'Inspect suspicious activity in the parking area and report the on-site condition.';
+
+  @override
+  String get taskDetailUnknownValue => 'Not available';
+
+  @override
+  String get taskDetailRespondAction => 'Respond to Task';
+
+  @override
+  String get taskPriorityNormal => 'NORMAL';
+
+  @override
+  String get taskPriorityHigh => 'HIGH';
+
+  @override
+  String get taskPriorityCritical => 'CRITICAL';
+
+  @override
   String get taskResponseTitle => 'Task Response';
 
   @override
   String get taskWorkflowTitle => 'Response Progress';
 
   @override
-  String get taskStageAssigned => 'Task received';
+  String get taskStageAssigned => 'Task assigned';
 
   @override
   String get taskStageAccepted => 'Task accepted';

@@ -22,6 +22,10 @@ abstract final class SecurityHomeMockData {
       id: 'TASK-DISPATCH-001',
       type: SecurityTaskPreviewType.dispatch,
       status: SecurityTaskPreviewStatus.attention,
+      priority: SecurityTaskPriority.high,
+      location: 'Basement B1',
+      source: 'Command Center',
+      createdAtLabel: '2 Oct 2026 • 11:30',
     ),
   ];
 

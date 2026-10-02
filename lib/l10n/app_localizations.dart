@@ -3374,6 +3374,96 @@ abstract class AppLocalizations {
   /// **'The package resident is no longer available for collection.'**
   String get packageCollectionResidentUnavailable;
 
+  /// No description provided for @taskDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Task Detail'**
+  String get taskDetailTitle;
+
+  /// No description provided for @taskDetailInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Task Information'**
+  String get taskDetailInformation;
+
+  /// No description provided for @taskDetailLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get taskDetailLocation;
+
+  /// No description provided for @taskDetailPriority.
+  ///
+  /// In en, this message translates to:
+  /// **'Priority'**
+  String get taskDetailPriority;
+
+  /// No description provided for @taskDetailSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Source'**
+  String get taskDetailSource;
+
+  /// No description provided for @taskDetailCreatedAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Created'**
+  String get taskDetailCreatedAt;
+
+  /// No description provided for @taskDetailStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get taskDetailStatus;
+
+  /// No description provided for @taskDetailStatusAwaitingResponse.
+  ///
+  /// In en, this message translates to:
+  /// **'AWAITING RESPONSE'**
+  String get taskDetailStatusAwaitingResponse;
+
+  /// No description provided for @taskDetailInstruction.
+  ///
+  /// In en, this message translates to:
+  /// **'Instruction'**
+  String get taskDetailInstruction;
+
+  /// No description provided for @taskDispatchInstruction.
+  ///
+  /// In en, this message translates to:
+  /// **'Inspect suspicious activity in the parking area and report the on-site condition.'**
+  String get taskDispatchInstruction;
+
+  /// No description provided for @taskDetailUnknownValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available'**
+  String get taskDetailUnknownValue;
+
+  /// No description provided for @taskDetailRespondAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Respond to Task'**
+  String get taskDetailRespondAction;
+
+  /// No description provided for @taskPriorityNormal.
+  ///
+  /// In en, this message translates to:
+  /// **'NORMAL'**
+  String get taskPriorityNormal;
+
+  /// No description provided for @taskPriorityHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'HIGH'**
+  String get taskPriorityHigh;
+
+  /// No description provided for @taskPriorityCritical.
+  ///
+  /// In en, this message translates to:
+  /// **'CRITICAL'**
+  String get taskPriorityCritical;
+
   /// No description provided for @taskResponseTitle.
   ///
   /// In en, this message translates to:
@@ -3389,7 +3479,7 @@ abstract class AppLocalizations {
   /// No description provided for @taskStageAssigned.
   ///
   /// In en, this message translates to:
-  /// **'Task received'**
+  /// **'Task assigned'**
   String get taskStageAssigned;
 
   /// No description provided for @taskStageAccepted.

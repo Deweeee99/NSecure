@@ -28,6 +28,7 @@ import '../../domain/repositories/security_dashboard_repository.dart';
 import '../concepts/security_module_catalog_screen.dart';
 import '../history/security_operational_history_screen.dart';
 import '../home/security_home_screen.dart';
+import '../task/security_task_detail_screen.dart';
 import '../task/security_task_response_screen.dart';
 
 class SecurityAppShell extends StatefulWidget {
@@ -73,6 +74,7 @@ class _SecurityAppShellState extends State<SecurityAppShell>
   bool _emergencyOpen = false;
   bool _packageOpen = false;
   SecurityTaskPreview? _selectedTask;
+  bool _taskResponseOpen = false;
   late List<SecurityTaskPreview> _activeTasks;
   final List<SecurityTaskHistoryEntry> _completedTaskHistory =
       <SecurityTaskHistoryEntry>[];
@@ -228,10 +230,18 @@ class _SecurityAppShellState extends State<SecurityAppShell>
   Widget _buildHomeArea() {
     final selectedTask = _selectedTask;
     if (selectedTask != null) {
-      return SecurityTaskResponseScreen(
+      if (_taskResponseOpen) {
+        return SecurityTaskResponseScreen(
+          task: selectedTask,
+          onBackHome: _backToTaskDetail,
+          onCompleted: _completeTaskResponse,
+        );
+      }
+
+      return SecurityTaskDetailScreen(
         task: selectedTask,
-        onBackHome: _closeTaskResponse,
-        onCompleted: _completeTaskResponse,
+        onBackHome: _closeTaskDetail,
+        onRespond: _startTaskResponse,
       );
     }
 
@@ -428,7 +438,11 @@ class _SecurityAppShellState extends State<SecurityAppShell>
     }
 
     if (_selectedTask != null) {
-      _closeTaskResponse();
+      if (_taskResponseOpen) {
+        _backToTaskDetail();
+      } else {
+        _closeTaskDetail();
+      }
       return;
     }
 
@@ -482,6 +496,7 @@ class _SecurityAppShellState extends State<SecurityAppShell>
     _emergencyOpen = false;
     _packageOpen = false;
     _selectedTask = null;
+    _taskResponseOpen = false;
     _incidentReturnsToPatrol = false;
     _incidentCreateContext = null;
     _initialEmergencyAlertId = null;
@@ -503,15 +518,31 @@ class _SecurityAppShellState extends State<SecurityAppShell>
           _currentIndex = 0;
           _resetHomeRoutes();
           _selectedTask = task;
+          _taskResponseOpen = false;
         });
         return;
     }
   }
 
-  void _closeTaskResponse() {
+  void _closeTaskDetail() {
     setState(() {
       _currentIndex = 0;
       _selectedTask = null;
+      _taskResponseOpen = false;
+    });
+  }
+
+  void _startTaskResponse() {
+    setState(() {
+      _currentIndex = 0;
+      _taskResponseOpen = true;
+    });
+  }
+
+  void _backToTaskDetail() {
+    setState(() {
+      _currentIndex = 0;
+      _taskResponseOpen = false;
     });
   }
 
@@ -530,6 +561,7 @@ class _SecurityAppShellState extends State<SecurityAppShell>
         ),
       );
       _selectedTask = null;
+      _taskResponseOpen = false;
     });
   }
 

@@ -1787,16 +1787,62 @@ class AppLocalizationsId extends AppLocalizations {
       'Resident paket sudah tidak tersedia untuk proses pengambilan.';
 
   @override
+  String get taskDetailTitle => 'Detail Tugas';
+
+  @override
+  String get taskDetailInformation => 'Informasi Tugas';
+
+  @override
+  String get taskDetailLocation => 'Lokasi';
+
+  @override
+  String get taskDetailPriority => 'Prioritas';
+
+  @override
+  String get taskDetailSource => 'Sumber';
+
+  @override
+  String get taskDetailCreatedAt => 'Dibuat';
+
+  @override
+  String get taskDetailStatus => 'Status';
+
+  @override
+  String get taskDetailStatusAwaitingResponse => 'MENUNGGU RESPONS';
+
+  @override
+  String get taskDetailInstruction => 'Instruksi';
+
+  @override
+  String get taskDispatchInstruction =>
+      'Periksa aktivitas mencurigakan di area parkir dan laporkan kondisi di lokasi.';
+
+  @override
+  String get taskDetailUnknownValue => 'Tidak tersedia';
+
+  @override
+  String get taskDetailRespondAction => 'Respons Tugas';
+
+  @override
+  String get taskPriorityNormal => 'NORMAL';
+
+  @override
+  String get taskPriorityHigh => 'TINGGI';
+
+  @override
+  String get taskPriorityCritical => 'KRITIS';
+
+  @override
   String get taskResponseTitle => 'Respons Tugas';
 
   @override
   String get taskWorkflowTitle => 'Progres Respons';
 
   @override
-  String get taskStageAssigned => 'Tugas diterima';
+  String get taskStageAssigned => 'Tugas masuk';
 
   @override
-  String get taskStageAccepted => 'Tugas diambil';
+  String get taskStageAccepted => 'Tugas diterima';
 
   @override
   String get taskStageEnRoute => 'Menuju lokasi';

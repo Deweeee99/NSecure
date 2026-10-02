@@ -4,9 +4,9 @@ NSecure is the standalone Flutter mobile application for security operations, ex
 
 ## Current phase
 
-NS-MOB-05 adds an operational History overview for the mock-first Task Response flow. Completed dispatch tasks are removed from Active Tasks and retained in-memory for the current app session with their task identity, completion time, and deterministic MVP evidence filename. The History tab now opens this operational overview first and keeps the existing Visitor Verification History available as a dedicated entry.
+NS-MOB-06 adds a Task Detail step for generic mock dispatch work before the existing Task Response lifecycle. The detail view exposes the task ID, location, priority, source, creation time, current status, and handling instruction, then hands the officer into the established response workflow. Patrol, Visitor, and Incident Active Tasks still open their domain-specific modules directly.
 
-This milestone still does not introduce a task backend contract or persistence. Existing Patrol, Visitor, Incident, Emergency, Package, and Visitor History behavior remain available. NS-MOB-02 mock-first behavior remains unchanged, and the legacy `/api/security/...` integration is still available as an optional compatibility mode.
+Task metadata remains mock/in-memory for this MVP and does not introduce a task backend contract or persistence. The NS-MOB-05 operational History flow remains unchanged, NS-MOB-02 mock-first behavior remains the default, and the legacy `/api/security/...` integration is still available as an optional compatibility mode.
 
 ## Runtime modes
 
