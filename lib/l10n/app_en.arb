@@ -570,5 +570,13 @@
       }
     }
   },
-  "taskBackToHome": "Back to Home"
+  "taskBackToHome": "Back to Home",
+  "completedTasks": "Completed Tasks",
+  "completedTasksSubtitle": "Tasks completed during the current app session.",
+  "noCompletedTasks": "No completed tasks yet",
+  "noCompletedTasksMessage": "Completed dispatch tasks will appear here.",
+  "taskCompletedStatus": "COMPLETED",
+  "taskEvidenceAttached": "Evidence",
+  "visitorVerificationHistory": "Visitor Verification History",
+  "visitorVerificationHistorySubtitle": "Open the existing visitor check-in and check-out history."
 }

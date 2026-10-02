@@ -125,6 +125,15 @@ void main() {
     expect(find.byKey(const Key('activeTask_TASK-DISPATCH-001')), findsNothing);
     expect(find.byKey(const Key('activeTask_TASK-PATROL-001')), findsOneWidget);
     expect(find.byKey(const Key('activeTask_TASK-VISITOR-001')), findsOneWidget);
+
+    await tester.tap(find.text('History'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Completed Tasks'), findsOneWidget);
+    expect(find.byKey(const Key('completedTask_TASK-DISPATCH-001')), findsOneWidget);
+    expect(find.text('TASK-DISPATCH-001'), findsOneWidget);
+    expect(find.text('COMPLETED'), findsOneWidget);
+    expect(find.textContaining('evidence_task-dispatch-001.jpg'), findsOneWidget);
   });
 
   testWidgets('Verify tab opens active QR verification path', (tester) async {
@@ -342,6 +351,11 @@ void main() {
     await tester.tap(find.text('History'));
     await tester.pumpAndSettle();
 
+    expect(find.text('Completed Tasks'), findsOneWidget);
+    expect(find.text('Visitor Verification History'), findsOneWidget);
+    await tester.tap(find.byKey(const Key('openVisitorVerificationHistory')));
+    await tester.pumpAndSettle();
+
     expect(find.text('Verification History'), findsOneWidget);
     expect(find.text('All'), findsOneWidget);
     expect(find.text('Checked In'), findsWidgets);
@@ -367,6 +381,11 @@ void main() {
     await tester.tap(find.byKey(const Key('confirmationDoneButton')));
     await tester.pumpAndSettle();
     await tester.tap(find.text('History'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Completed Tasks'), findsOneWidget);
+    expect(find.text('Visitor Verification History'), findsOneWidget);
+    await tester.tap(find.byKey(const Key('openVisitorVerificationHistory')));
     await tester.pumpAndSettle();
 
     expect(find.text('Verification History'), findsOneWidget);

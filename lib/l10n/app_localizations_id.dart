@@ -1842,4 +1842,31 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get taskBackToHome => 'Kembali ke Beranda';
+
+  @override
+  String get completedTasks => 'Tugas Selesai';
+
+  @override
+  String get completedTasksSubtitle =>
+      'Tugas yang selesai selama sesi aplikasi saat ini.';
+
+  @override
+  String get noCompletedTasks => 'Belum ada tugas selesai';
+
+  @override
+  String get noCompletedTasksMessage =>
+      'Tugas dispatch yang selesai akan muncul di sini.';
+
+  @override
+  String get taskCompletedStatus => 'SELESAI';
+
+  @override
+  String get taskEvidenceAttached => 'Bukti';
+
+  @override
+  String get visitorVerificationHistory => 'Riwayat Verifikasi Tamu';
+
+  @override
+  String get visitorVerificationHistorySubtitle =>
+      'Buka riwayat check-in dan check-out tamu yang sudah ada.';
 }

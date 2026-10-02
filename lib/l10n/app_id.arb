@@ -570,5 +570,13 @@
       }
     }
   },
-  "taskBackToHome": "Kembali ke Beranda"
+  "taskBackToHome": "Kembali ke Beranda",
+  "completedTasks": "Tugas Selesai",
+  "completedTasksSubtitle": "Tugas yang selesai selama sesi aplikasi saat ini.",
+  "noCompletedTasks": "Belum ada tugas selesai",
+  "noCompletedTasksMessage": "Tugas dispatch yang selesai akan muncul di sini.",
+  "taskCompletedStatus": "SELESAI",
+  "taskEvidenceAttached": "Bukti",
+  "visitorVerificationHistory": "Riwayat Verifikasi Tamu",
+  "visitorVerificationHistorySubtitle": "Buka riwayat check-in dan check-out tamu yang sudah ada."
 }

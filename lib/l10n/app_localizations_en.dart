@@ -1852,4 +1852,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get taskBackToHome => 'Back to Home';
+
+  @override
+  String get completedTasks => 'Completed Tasks';
+
+  @override
+  String get completedTasksSubtitle =>
+      'Tasks completed during the current app session.';
+
+  @override
+  String get noCompletedTasks => 'No completed tasks yet';
+
+  @override
+  String get noCompletedTasksMessage =>
+      'Completed dispatch tasks will appear here.';
+
+  @override
+  String get taskCompletedStatus => 'COMPLETED';
+
+  @override
+  String get taskEvidenceAttached => 'Evidence';
+
+  @override
+  String get visitorVerificationHistory => 'Visitor Verification History';
+
+  @override
+  String get visitorVerificationHistorySubtitle =>
+      'Open the existing visitor check-in and check-out history.';
 }

@@ -21,10 +21,12 @@ import '../../../visitor/presentation/history/verification_history_flow.dart';
 import '../../../visitor/presentation/verification/visitor_verification_flow.dart';
 import '../../data/mock/security_home_mock_data.dart';
 import '../../domain/models/security_dashboard.dart';
+import '../../domain/models/security_task_history_entry.dart';
 import '../../domain/models/security_task_preview.dart';
 import '../../domain/models/security_user.dart';
 import '../../domain/repositories/security_dashboard_repository.dart';
 import '../concepts/security_module_catalog_screen.dart';
+import '../history/security_operational_history_screen.dart';
 import '../home/security_home_screen.dart';
 import '../task/security_task_response_screen.dart';
 
@@ -72,6 +74,9 @@ class _SecurityAppShellState extends State<SecurityAppShell>
   bool _packageOpen = false;
   SecurityTaskPreview? _selectedTask;
   late List<SecurityTaskPreview> _activeTasks;
+  final List<SecurityTaskHistoryEntry> _completedTaskHistory =
+      <SecurityTaskHistoryEntry>[];
+  bool _visitorHistoryOpen = false;
   bool _incidentReturnsToPatrol = false;
   IncidentCreateContext? _incidentCreateContext;
   int? _initialEmergencyAlertId;
@@ -148,14 +153,7 @@ class _SecurityAppShellState extends State<SecurityAppShell>
                   onVisitUpdated: _markVisitorUpdated,
                   onSessionExpired: widget.onLogout,
                 ),
-                VerificationHistoryFlow(
-                  key: _historyFlowKey,
-                  repository: widget.visitorRepository,
-                  refreshRevision: _visitorRevision,
-                  onVisitUpdated: _markVisitorUpdated,
-                  onContinueVerifying: () => _selectTab(1),
-                  onSessionExpired: widget.onLogout,
-                ),
+                _buildHistoryArea(),
                 SecurityModuleCatalogScreen(
                   onOpenVisitorVerification: () => _selectTab(1),
                   onOpenPatrolManagement: _openPatrol,
@@ -204,6 +202,26 @@ class _SecurityAppShellState extends State<SecurityAppShell>
             ),
         ],
       ),
+    );
+  }
+
+  Widget _buildHistoryArea() {
+    if (_visitorHistoryOpen) {
+      return VerificationHistoryFlow(
+        key: _historyFlowKey,
+        repository: widget.visitorRepository,
+        refreshRevision: _visitorRevision,
+        onVisitUpdated: _markVisitorUpdated,
+        onContinueVerifying: () => _selectTab(1),
+        onSessionExpired: widget.onLogout,
+      );
+    }
+
+    return SecurityOperationalHistoryScreen(
+      completedTasks: _completedTaskHistory,
+      onOpenVisitorHistory: () {
+        setState(() => _visitorHistoryOpen = true);
+      },
     );
   }
 
@@ -393,8 +411,14 @@ class _SecurityAppShellState extends State<SecurityAppShell>
     }
 
     if (_currentIndex == 2) {
-      final handled = _historyFlowKey.currentState?.handleSystemBack() ?? false;
-      if (!handled) _selectTab(0);
+      if (_visitorHistoryOpen) {
+        final handled = _historyFlowKey.currentState?.handleSystemBack() ?? false;
+        if (!handled) {
+          setState(() => _visitorHistoryOpen = false);
+        }
+      } else {
+        _selectTab(0);
+      }
       return;
     }
 
@@ -446,6 +470,9 @@ class _SecurityAppShellState extends State<SecurityAppShell>
     setState(() {
       _currentIndex = index;
       _resetHomeRoutes();
+      if (index == 2) {
+        _visitorHistoryOpen = false;
+      }
     });
   }
 
@@ -494,6 +521,14 @@ class _SecurityAppShellState extends State<SecurityAppShell>
       _activeTasks = _activeTasks
           .where((item) => item.id != task.id)
           .toList(growable: false);
+      _completedTaskHistory.insert(
+        0,
+        SecurityTaskHistoryEntry(
+          task: task,
+          completedAt: DateTime.now(),
+          evidenceFileName: 'evidence_${task.id.toLowerCase()}.jpg',
+        ),
+      );
       _selectedTask = null;
     });
   }

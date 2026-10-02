@@ -4,9 +4,9 @@ NSecure is the standalone Flutter mobile application for security operations, ex
 
 ## Current phase
 
-NS-MOB-04 adds a mock-first Task Response MVP on top of the active tasks introduced in NS-MOB-03. In default mock mode, an active task now opens an in-memory response lifecycle: accept the task, head to the location, arrive, start handling, attach deterministic MVP evidence, and complete the task. Completed tasks are removed from the current in-memory Active Tasks list.
+NS-MOB-05 adds an operational History overview for the mock-first Task Response flow. Completed dispatch tasks are removed from Active Tasks and retained in-memory for the current app session with their task identity, completion time, and deterministic MVP evidence filename. The History tab now opens this operational overview first and keeps the existing Visitor Verification History available as a dedicated entry.
 
-This milestone does not introduce a task backend contract or persistence. Existing Patrol, Visitor, Incident, Emergency, and Package modules remain unchanged and available through Quick Actions. NS-MOB-02 mock-first behavior remains unchanged, and the legacy `/api/security/...` integration is still available as an optional compatibility mode.
+This milestone still does not introduce a task backend contract or persistence. Existing Patrol, Visitor, Incident, Emergency, Package, and Visitor History behavior remain available. NS-MOB-02 mock-first behavior remains unchanged, and the legacy `/api/security/...` integration is still available as an optional compatibility mode.
 
 ## Runtime modes
 

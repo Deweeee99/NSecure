@@ -3481,6 +3481,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Back to Home'**
   String get taskBackToHome;
+
+  /// No description provided for @completedTasks.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed Tasks'**
+  String get completedTasks;
+
+  /// No description provided for @completedTasksSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tasks completed during the current app session.'**
+  String get completedTasksSubtitle;
+
+  /// No description provided for @noCompletedTasks.
+  ///
+  /// In en, this message translates to:
+  /// **'No completed tasks yet'**
+  String get noCompletedTasks;
+
+  /// No description provided for @noCompletedTasksMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed dispatch tasks will appear here.'**
+  String get noCompletedTasksMessage;
+
+  /// No description provided for @taskCompletedStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'COMPLETED'**
+  String get taskCompletedStatus;
+
+  /// No description provided for @taskEvidenceAttached.
+  ///
+  /// In en, this message translates to:
+  /// **'Evidence'**
+  String get taskEvidenceAttached;
+
+  /// No description provided for @visitorVerificationHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Visitor Verification History'**
+  String get visitorVerificationHistory;
+
+  /// No description provided for @visitorVerificationHistorySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the existing visitor check-in and check-out history.'**
+  String get visitorVerificationHistorySubtitle;
 }
 
 class _AppLocalizationsDelegate
